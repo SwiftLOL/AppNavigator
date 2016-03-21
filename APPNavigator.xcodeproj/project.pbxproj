@@ -10,7 +10,6 @@
 		E1AC2AD51C9F949000A94556 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2AD41C9F949000A94556 /* main.m */; };
 		E1AC2AD81C9F949000A94556 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2AD71C9F949000A94556 /* AppDelegate.m */; };
 		E1AC2AE01C9F949000A94556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2ADF1C9F949000A94556 /* Assets.xcassets */; };
-		E1AC2AE31C9F949000A94556 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AE11C9F949000A94556 /* LaunchScreen.storyboard */; };
 		E1AC2B0B1C9F954900A94556 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AF71C9F954900A94556 /* Icon-60@2x.png */; };
 		E1AC2B0C1C9F954900A94556 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AF81C9F954900A94556 /* Icon-60@3x.png */; };
 		E1AC2B0D1C9F954900A94556 /* Icon-Small-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AF91C9F954900A94556 /* Icon-Small-40@2x.png */; };
@@ -40,7 +39,6 @@
 		E1AC2AD61C9F949000A94556 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E1AC2AD71C9F949000A94556 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E1AC2ADF1C9F949000A94556 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E1AC2AE21C9F949000A94556 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1AC2AE41C9F949000A94556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1AC2AF71C9F954900A94556 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
 		E1AC2AF81C9F954900A94556 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
@@ -107,7 +105,6 @@
 				E1AC2AD61C9F949000A94556 /* AppDelegate.h */,
 				E1AC2AD71C9F949000A94556 /* AppDelegate.m */,
 				E1AC2ADF1C9F949000A94556 /* Assets.xcassets */,
-				E1AC2AE11C9F949000A94556 /* LaunchScreen.storyboard */,
 				E1AC2AE41C9F949000A94556 /* Info.plist */,
 				E1AC2AD31C9F949000A94556 /* Supporting Files */,
 			);
@@ -244,7 +241,6 @@
 				E1AC2B0F1C9F954900A94556 /* Icon-Small.png in Resources */,
 				E1AC2B161C9F954900A94556 /* Default-iOS7-568h@2x.png in Resources */,
 				E1AC2B131C9F954900A94556 /* Icon@2x.png in Resources */,
-				E1AC2AE31C9F949000A94556 /* LaunchScreen.storyboard in Resources */,
 				E1AC2B181C9F954900A94556 /* Default-iOS7@2x.png in Resources */,
 				E1AC2B0D1C9F954900A94556 /* Icon-Small-40@2x.png in Resources */,
 				E1AC2B101C9F954900A94556 /* Icon-Small@2x.png in Resources */,
@@ -280,17 +276,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E1AC2AE11C9F949000A94556 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1AC2AE21C9F949000A94556 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E1AC2AE51C9F949000A94556 /* Debug */ = {
@@ -416,6 +401,7 @@
 				E1AC2AE91C9F949000A94556 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

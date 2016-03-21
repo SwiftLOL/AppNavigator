@@ -7,7 +7,11 @@
 //
 
 #import "AppDelegate.h"
-
+#import "APPNavigator.h"
+#import "AViewController.h"
+#import "BViewController.h"
+#import "CViewController.h"
+#import "DViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +20,44 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window=[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor=[UIColor blackColor];
+    
+    
+    
+    [[APPNavigator shareAPPNavigator] registerAPPScheme:@"edaixi" window:self.window];
+    [[APPNavigator shareAPPNavigator] registerComponentWithComponentFormat:@"/tabBarComponent/" withComponentName:NSStringFromClass([UITabBarController class])];
+    [[APPNavigator shareAPPNavigator] registerComponentWithComponentFormat:@"/navigtionComponment/" withComponentName:NSStringFromClass([UINavigationController class])];
+    [[APPNavigator shareAPPNavigator] registerComponentWithComponentFormat:@"/AComponent/" withComponentName:NSStringFromClass([AViewController class])];
+    [[APPNavigator shareAPPNavigator] registerComponentWithComponentFormat:@"/BComponent/" withComponentName:NSStringFromClass([BViewController class])];
+    [[APPNavigator shareAPPNavigator] registerComponentWithComponentFormat:@"/CComponent/" withComponentName:NSStringFromClass([CViewController class])];
+    [[APPNavigator shareAPPNavigator] registerComponentWithComponentFormat:@"/DComponent/" withComponentName:NSStringFromClass([DViewController class])];
+    
+    [[APPNavigator shareAPPNavigator] registerMethodForGetWhichChildInWindow:@selector(topViewController) ComponentOfClassName:NSStringFromClass([UINavigationController class])];
+    
+    [[APPNavigator shareAPPNavigator] registerMethodForGetWhichChildInWindow:@selector(selectedViewController) ComponentOfClassName:NSStringFromClass([UITabBarController class])];
+    
+    UITabBarController  *tabBarCtr=(UITabBarController *)[[APPNavigator shareAPPNavigator] componentOfUrl:@"/tabBarComponent/" otherParams:nil];
+    UINavigationController  *aNavCtr=(UINavigationController *)[[APPNavigator shareAPPNavigator] componentOfUrl:@"/navigtionComponment/" otherParams:nil];
+    UIViewController *aCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/AComponent/" otherParams:nil];
+    [aNavCtr setViewControllers:@[aCtr]];
+    
+    UINavigationController  *bNavCtr=(UINavigationController *)[[APPNavigator shareAPPNavigator] componentOfUrl:@"/navigtionComponment/" otherParams:nil];
+    UIViewController *bCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/BComponent/" otherParams:nil];
+    [bNavCtr setViewControllers:@[bCtr]];
+    
+    
+    UINavigationController  *cNavCtr=(UINavigationController *)[[APPNavigator shareAPPNavigator] componentOfUrl:@"/navigtionComponment/" otherParams:nil];
+    UIViewController *cCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/CComponent/" otherParams:nil];
+    [cNavCtr setViewControllers:@[cCtr]];
+    
+    
+    [tabBarCtr setViewControllers:@[aNavCtr,bNavCtr,cNavCtr]];
+    
+    
+    self.window.rootViewController=tabBarCtr;
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

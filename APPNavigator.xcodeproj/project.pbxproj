@@ -9,10 +9,29 @@
 /* Begin PBXBuildFile section */
 		E1AC2AD51C9F949000A94556 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2AD41C9F949000A94556 /* main.m */; };
 		E1AC2AD81C9F949000A94556 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2AD71C9F949000A94556 /* AppDelegate.m */; };
-		E1AC2ADB1C9F949000A94556 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2ADA1C9F949000A94556 /* ViewController.m */; };
-		E1AC2ADE1C9F949000A94556 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2ADC1C9F949000A94556 /* Main.storyboard */; };
 		E1AC2AE01C9F949000A94556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2ADF1C9F949000A94556 /* Assets.xcassets */; };
 		E1AC2AE31C9F949000A94556 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AE11C9F949000A94556 /* LaunchScreen.storyboard */; };
+		E1AC2B0B1C9F954900A94556 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AF71C9F954900A94556 /* Icon-60@2x.png */; };
+		E1AC2B0C1C9F954900A94556 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AF81C9F954900A94556 /* Icon-60@3x.png */; };
+		E1AC2B0D1C9F954900A94556 /* Icon-Small-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AF91C9F954900A94556 /* Icon-Small-40@2x.png */; };
+		E1AC2B0E1C9F954900A94556 /* Icon-Small-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AFA1C9F954900A94556 /* Icon-Small-40@3x.png */; };
+		E1AC2B0F1C9F954900A94556 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AFB1C9F954900A94556 /* Icon-Small.png */; };
+		E1AC2B101C9F954900A94556 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AFC1C9F954900A94556 /* Icon-Small@2x.png */; };
+		E1AC2B111C9F954900A94556 /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AFD1C9F954900A94556 /* Icon-Small@3x.png */; };
+		E1AC2B121C9F954900A94556 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AFE1C9F954900A94556 /* Icon.png */; };
+		E1AC2B131C9F954900A94556 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AFF1C9F954900A94556 /* Icon@2x.png */; };
+		E1AC2B141C9F954900A94556 /* APPNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2B021C9F954900A94556 /* APPNavigator.m */; };
+		E1AC2B151C9F954900A94556 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B041C9F954900A94556 /* Default-568h@2x.png */; };
+		E1AC2B161C9F954900A94556 /* Default-iOS7-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B051C9F954900A94556 /* Default-iOS7-568h@2x.png */; };
+		E1AC2B171C9F954900A94556 /* Default-iOS7@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B061C9F954900A94556 /* Default-iOS7@2x-1.png */; };
+		E1AC2B181C9F954900A94556 /* Default-iOS7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B071C9F954900A94556 /* Default-iOS7@2x.png */; };
+		E1AC2B191C9F954900A94556 /* Default-iOS8-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B081C9F954900A94556 /* Default-iOS8-667h@2x.png */; };
+		E1AC2B1A1C9F954900A94556 /* Default-iOS8-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B091C9F954900A94556 /* Default-iOS8-736h@3x.png */; };
+		E1AC2B1B1C9F954900A94556 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B0A1C9F954900A94556 /* Default.png */; };
+		E1AC2B261C9F95DC00A94556 /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2B1E1C9F95DC00A94556 /* AViewController.m */; };
+		E1AC2B271C9F95DC00A94556 /* BViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2B201C9F95DC00A94556 /* BViewController.m */; };
+		E1AC2B281C9F95DC00A94556 /* CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2B231C9F95DC00A94556 /* CViewController.m */; };
+		E1AC2B291C9F95DC00A94556 /* DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2B251C9F95DC00A94556 /* DViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +39,35 @@
 		E1AC2AD41C9F949000A94556 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E1AC2AD61C9F949000A94556 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E1AC2AD71C9F949000A94556 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E1AC2AD91C9F949000A94556 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E1AC2ADA1C9F949000A94556 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E1AC2ADD1C9F949000A94556 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1AC2ADF1C9F949000A94556 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1AC2AE21C9F949000A94556 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1AC2AE41C9F949000A94556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1AC2AF71C9F954900A94556 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
+		E1AC2AF81C9F954900A94556 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
+		E1AC2AF91C9F954900A94556 /* Icon-Small-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-40@2x.png"; sourceTree = "<group>"; };
+		E1AC2AFA1C9F954900A94556 /* Icon-Small-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-40@3x.png"; sourceTree = "<group>"; };
+		E1AC2AFB1C9F954900A94556 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		E1AC2AFC1C9F954900A94556 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		E1AC2AFD1C9F954900A94556 /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
+		E1AC2AFE1C9F954900A94556 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		E1AC2AFF1C9F954900A94556 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		E1AC2B011C9F954900A94556 /* APPNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPNavigator.h; sourceTree = "<group>"; };
+		E1AC2B021C9F954900A94556 /* APPNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPNavigator.m; sourceTree = "<group>"; };
+		E1AC2B041C9F954900A94556 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E1AC2B051C9F954900A94556 /* Default-iOS7-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iOS7-568h@2x.png"; sourceTree = "<group>"; };
+		E1AC2B061C9F954900A94556 /* Default-iOS7@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iOS7@2x-1.png"; sourceTree = "<group>"; };
+		E1AC2B071C9F954900A94556 /* Default-iOS7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iOS7@2x.png"; sourceTree = "<group>"; };
+		E1AC2B081C9F954900A94556 /* Default-iOS8-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iOS8-667h@2x.png"; sourceTree = "<group>"; };
+		E1AC2B091C9F954900A94556 /* Default-iOS8-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iOS8-736h@3x.png"; sourceTree = "<group>"; };
+		E1AC2B0A1C9F954900A94556 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		E1AC2B1D1C9F95DC00A94556 /* AViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AViewController.h; sourceTree = "<group>"; };
+		E1AC2B1E1C9F95DC00A94556 /* AViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AViewController.m; sourceTree = "<group>"; };
+		E1AC2B1F1C9F95DC00A94556 /* BViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BViewController.h; sourceTree = "<group>"; };
+		E1AC2B201C9F95DC00A94556 /* BViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BViewController.m; sourceTree = "<group>"; };
+		E1AC2B221C9F95DC00A94556 /* CViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CViewController.h; sourceTree = "<group>"; };
+		E1AC2B231C9F95DC00A94556 /* CViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CViewController.m; sourceTree = "<group>"; };
+		E1AC2B241C9F95DC00A94556 /* DViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DViewController.h; sourceTree = "<group>"; };
+		E1AC2B251C9F95DC00A94556 /* DViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +100,12 @@
 		E1AC2AD21C9F949000A94556 /* APPNavigator */ = {
 			isa = PBXGroup;
 			children = (
+				E1AC2B1C1C9F95DC00A94556 /* ViewControllers */,
+				E1AC2AF61C9F954900A94556 /* AppIcon */,
+				E1AC2B001C9F954900A94556 /* APPNavigator */,
+				E1AC2B031C9F954900A94556 /* LaunchImage */,
 				E1AC2AD61C9F949000A94556 /* AppDelegate.h */,
 				E1AC2AD71C9F949000A94556 /* AppDelegate.m */,
-				E1AC2AD91C9F949000A94556 /* ViewController.h */,
-				E1AC2ADA1C9F949000A94556 /* ViewController.m */,
-				E1AC2ADC1C9F949000A94556 /* Main.storyboard */,
 				E1AC2ADF1C9F949000A94556 /* Assets.xcassets */,
 				E1AC2AE11C9F949000A94556 /* LaunchScreen.storyboard */,
 				E1AC2AE41C9F949000A94556 /* Info.plist */,
@@ -77,6 +120,68 @@
 				E1AC2AD41C9F949000A94556 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E1AC2AF61C9F954900A94556 /* AppIcon */ = {
+			isa = PBXGroup;
+			children = (
+				E1AC2AF71C9F954900A94556 /* Icon-60@2x.png */,
+				E1AC2AF81C9F954900A94556 /* Icon-60@3x.png */,
+				E1AC2AF91C9F954900A94556 /* Icon-Small-40@2x.png */,
+				E1AC2AFA1C9F954900A94556 /* Icon-Small-40@3x.png */,
+				E1AC2AFB1C9F954900A94556 /* Icon-Small.png */,
+				E1AC2AFC1C9F954900A94556 /* Icon-Small@2x.png */,
+				E1AC2AFD1C9F954900A94556 /* Icon-Small@3x.png */,
+				E1AC2AFE1C9F954900A94556 /* Icon.png */,
+				E1AC2AFF1C9F954900A94556 /* Icon@2x.png */,
+			);
+			path = AppIcon;
+			sourceTree = "<group>";
+		};
+		E1AC2B001C9F954900A94556 /* APPNavigator */ = {
+			isa = PBXGroup;
+			children = (
+				E1AC2B011C9F954900A94556 /* APPNavigator.h */,
+				E1AC2B021C9F954900A94556 /* APPNavigator.m */,
+			);
+			path = APPNavigator;
+			sourceTree = "<group>";
+		};
+		E1AC2B031C9F954900A94556 /* LaunchImage */ = {
+			isa = PBXGroup;
+			children = (
+				E1AC2B041C9F954900A94556 /* Default-568h@2x.png */,
+				E1AC2B051C9F954900A94556 /* Default-iOS7-568h@2x.png */,
+				E1AC2B061C9F954900A94556 /* Default-iOS7@2x-1.png */,
+				E1AC2B071C9F954900A94556 /* Default-iOS7@2x.png */,
+				E1AC2B081C9F954900A94556 /* Default-iOS8-667h@2x.png */,
+				E1AC2B091C9F954900A94556 /* Default-iOS8-736h@3x.png */,
+				E1AC2B0A1C9F954900A94556 /* Default.png */,
+			);
+			path = LaunchImage;
+			sourceTree = "<group>";
+		};
+		E1AC2B1C1C9F95DC00A94556 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1AC2B1D1C9F95DC00A94556 /* AViewController.h */,
+				E1AC2B1E1C9F95DC00A94556 /* AViewController.m */,
+				E1AC2B1F1C9F95DC00A94556 /* BViewController.h */,
+				E1AC2B201C9F95DC00A94556 /* BViewController.m */,
+				E1AC2B211C9F95DC00A94556 /* Custom */,
+				E1AC2B221C9F95DC00A94556 /* CViewController.h */,
+				E1AC2B231C9F95DC00A94556 /* CViewController.m */,
+				E1AC2B241C9F95DC00A94556 /* DViewController.h */,
+				E1AC2B251C9F95DC00A94556 /* DViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E1AC2B211C9F95DC00A94556 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,9 +241,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AC2B0F1C9F954900A94556 /* Icon-Small.png in Resources */,
+				E1AC2B161C9F954900A94556 /* Default-iOS7-568h@2x.png in Resources */,
+				E1AC2B131C9F954900A94556 /* Icon@2x.png in Resources */,
 				E1AC2AE31C9F949000A94556 /* LaunchScreen.storyboard in Resources */,
+				E1AC2B181C9F954900A94556 /* Default-iOS7@2x.png in Resources */,
+				E1AC2B0D1C9F954900A94556 /* Icon-Small-40@2x.png in Resources */,
+				E1AC2B101C9F954900A94556 /* Icon-Small@2x.png in Resources */,
+				E1AC2B0E1C9F954900A94556 /* Icon-Small-40@3x.png in Resources */,
+				E1AC2B0C1C9F954900A94556 /* Icon-60@3x.png in Resources */,
 				E1AC2AE01C9F949000A94556 /* Assets.xcassets in Resources */,
-				E1AC2ADE1C9F949000A94556 /* Main.storyboard in Resources */,
+				E1AC2B1A1C9F954900A94556 /* Default-iOS8-736h@3x.png in Resources */,
+				E1AC2B1B1C9F954900A94556 /* Default.png in Resources */,
+				E1AC2B151C9F954900A94556 /* Default-568h@2x.png in Resources */,
+				E1AC2B121C9F954900A94556 /* Icon.png in Resources */,
+				E1AC2B111C9F954900A94556 /* Icon-Small@3x.png in Resources */,
+				E1AC2B171C9F954900A94556 /* Default-iOS7@2x-1.png in Resources */,
+				E1AC2B191C9F954900A94556 /* Default-iOS8-667h@2x.png in Resources */,
+				E1AC2B0B1C9F954900A94556 /* Icon-60@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,8 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1AC2ADB1C9F949000A94556 /* ViewController.m in Sources */,
+				E1AC2B261C9F95DC00A94556 /* AViewController.m in Sources */,
+				E1AC2B141C9F954900A94556 /* APPNavigator.m in Sources */,
+				E1AC2B281C9F95DC00A94556 /* CViewController.m in Sources */,
 				E1AC2AD81C9F949000A94556 /* AppDelegate.m in Sources */,
+				E1AC2B271C9F95DC00A94556 /* BViewController.m in Sources */,
+				E1AC2B291C9F95DC00A94556 /* DViewController.m in Sources */,
 				E1AC2AD51C9F949000A94556 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,14 +282,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E1AC2ADC1C9F949000A94556 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1AC2ADD1C9F949000A94556 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E1AC2AE11C9F949000A94556 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -261,6 +377,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = APPNavigator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SwiftLOL.APPNavigator;
@@ -272,6 +389,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = APPNavigator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SwiftLOL.APPNavigator;

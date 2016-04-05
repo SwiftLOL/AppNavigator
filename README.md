@@ -40,4 +40,4 @@
             [[APPNavigator  shareAPPNavigator] popComponentAnimated:YES];
 
 
-### 其他功能详看demo，更多功能待开发中。。。。        
+### 其他功能详看源代码，更多功能待开发中。。。。        

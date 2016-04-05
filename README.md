@@ -40,4 +40,4 @@ APPNavigator是用于UIViewController间解耦，通过url实现UIViewController
         详看demo
 
 
-        
+        功能未完善，待开发中。。。。        

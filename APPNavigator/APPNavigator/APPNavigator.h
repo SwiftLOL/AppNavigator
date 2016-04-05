@@ -43,9 +43,6 @@ _Pragma("clang diagnostic pop") \
 } while (0)
 
 
-
-#define export_module(a)                 
-
 @interface APPNavigator : NSObject
 
 //application路由器单例

@@ -80,7 +80,7 @@
 {
     for (NSString *className in classNames) {
         Class c=NSClassFromString(className);
-        [c initialize];
+        [c class];
     }
 }
 
@@ -125,7 +125,8 @@
     
     if([[APPNavigator shareAPPNavigator].componentToViewControllerMaps objectForKey:componentName])
     {
-        return;
+        NSString *warning=[NSString stringWithFormat:@"该组件%@已经注册过了",className];
+        APPNavigatorAssert(className, warning);;
     }else{
         [self.componentArray addObject:componentName];
         [self.componentToViewControllerMaps setObject:className forKey:componentName];
@@ -142,7 +143,8 @@
     NSString *selectorName=[self.whichChildComponentInWindowSelectorNameMaps objectForKey:className];
     if(selectorName)
     {
-        return;
+        NSString *warning=[NSString stringWithFormat:@"%@的%@已经注册过了",className,NSStringFromSelector(selector)];
+        APPNavigatorAssert(className, warning);
     }
 
     [self.whichChildComponentInWindowSelectorNameMaps setValue:NSStringFromSelector(selector) forKey:className];

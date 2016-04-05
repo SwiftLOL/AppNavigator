@@ -7,8 +7,7 @@
 
 
 ## 使用说明
-
- *  1.注册scheme，及UIWindow.
+* 1.注册scheme，及UIWindow.
  
          [[APPNavigator shareAPPNavigator] registerAPPScheme:@"SwiftLOL" window:self.window];
        
@@ -41,8 +40,4 @@
             [[APPNavigator  shareAPPNavigator] popComponentAnimated:YES];
 
 
-
-  详看demo
-
-
-  更多功能待开发中。。。。        
+### 其他功能详看demo，更多功能待开发中。。。。        

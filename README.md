@@ -17,7 +17,8 @@
           [[APPNavigator shareAPPNavigator] createViewControllerByClassNames:@[@"AViewController",@"BViewController",@"CViewController"]];
 
 * 3.每个子类需要遵循下面的协议，用于自定义组件名、参数、主键等信息
-                   
+
+```         
       @protocol APPNavigatorProtocol<NSObject>
       @required
       +(nonnull NSString *)registerComponentName;
@@ -25,7 +26,7 @@
       +(nullable NSDictionary *)registerParams;
       +(nullable NSString *)registerPrimaryKey;
      @end
-
+```
 * 4.通过url加载组件
 
            UIViewController *aCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/a?userName=wangjiajia&userId=1" otherParams:nil];

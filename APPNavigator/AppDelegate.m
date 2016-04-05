@@ -20,7 +20,7 @@
     self.window.backgroundColor=[UIColor blackColor];
     
     //注册app内跳转scheme及主window
-    [[APPNavigator shareAPPNavigator] registerAPPScheme:@"edaixi" window:self.window];
+    [[APPNavigator shareAPPNavigator] registerAPPScheme:@"SwiftLOL" window:self.window];
     //通过类名注册所有类
     [[APPNavigator shareAPPNavigator] createViewControllerByClassNames:@[@"AViewController",@"BViewController",@"CViewController"]];
     //注册容器控制器 获取当前显示的字控制器的方法

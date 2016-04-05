@@ -5,6 +5,7 @@ APPNavigator是用于UIViewController间解耦，通过url实现UIViewController
 
 
 使用说明:
+
         1.注册scheme，及UIWindow
           [[APPNavigator shareAPPNavigator] registerAPPScheme:@"SwiftLOL" window:self.window];
        

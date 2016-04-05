@@ -13,7 +13,7 @@
        
 * 2.通过类名，动态加载UIViewController子类的类对象。
           
-          [[APPNavigator shareAPPNavigator] createViewControllerByClassNames:@[@"AViewController",@"BViewController",@"CViewController"]];
+          [[APPNavigator shareAPPNavigator] loadViewControllerByClassNames:@[@"AViewController",@"BViewController",@"CViewController"]];
 
 * 3.每个子类需要遵循下面的协议，用于自定义组件名、参数、主键等信息
 

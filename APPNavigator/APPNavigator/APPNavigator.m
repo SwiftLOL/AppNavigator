@@ -76,7 +76,7 @@
 }
 
 
--(void)createViewControllerByClassNames:(NSArray *)classNames
+-(void)loadViewControllerByClassNames:(NSArray *)classNames
 {
     for (NSString *className in classNames) {
         Class c=NSClassFromString(className);

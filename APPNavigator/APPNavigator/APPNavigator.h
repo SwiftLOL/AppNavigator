@@ -48,7 +48,7 @@ _Pragma("clang diagnostic pop") \
 //application路由器单例
 +(nonnull instancetype) shareAPPNavigator;
 
--(void)createViewControllerByClassNames:(nullable NSArray *)classNames;
+-(void)loadViewControllerByClassNames:(nullable NSArray *)classNames;
 
 //注册当前app scheme  依赖注入appDelegate,以便操控整个app视图层次结构
 -(void) registerAPPScheme:(nonnull NSString *) scheme  window:(nonnull UIWindow *) window;

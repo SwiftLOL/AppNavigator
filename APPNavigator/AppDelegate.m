@@ -22,7 +22,7 @@
     //注册app内跳转scheme及主window
     [[APPNavigator shareAPPNavigator] registerAPPScheme:@"SwiftLOL" window:self.window];
     //通过类名注册所有类
-    [[APPNavigator shareAPPNavigator] createViewControllerByClassNames:@[@"AViewController",@"BViewController",@"CViewController"]];
+    [[APPNavigator shareAPPNavigator] loadViewControllerByClassNames:@[@"AViewController",@"BViewController",@"CViewController"]];
     //注册容器控制器 获取当前显示的子控制器的方法
     [[APPNavigator shareAPPNavigator] registerMethodForGetWhichChildInWindow:@selector(topViewController) ComponentOfClassName:NSStringFromClass([UINavigationController class])];
     [[APPNavigator shareAPPNavigator] registerMethodForGetWhichChildInWindow:@selector(selectedViewController) ComponentOfClassName:NSStringFromClass([UITabBarController class])];

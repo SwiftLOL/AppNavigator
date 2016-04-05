@@ -1,50 +1,40 @@
 //
 //  CViewController.m
-//  chineseBoy0822
+//  APPNavigator
 //
-//  Created by 王佳佳 on 16/3/2.
-//  Copyright © 2016年 chineseBoy. All rights reserved.
+//  Created by wangJiaJia on 16/4/4.
+//  Copyright © 2016年 王佳佳. All rights reserved.
 //
 
 #import "CViewController.h"
 #import "APPNavigator.h"
-@interface CViewController ()
 
-@end
 
 @implementation CViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.title=@"C";
-    self.view.backgroundColor=[UIColor yellowColor];
-    UITapGestureRecognizer *tapGestureRecognizer=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMethod)];
-    [self.view addGestureRecognizer:tapGestureRecognizer];
-    
++(NSString *)registerComponentName
+{
+    return @"c";
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    self.title=@"c";
+    
+    self.view.backgroundColor=[UIColor blueColor];
     
     
-    NSLog(@"**********************************");
-    NSLog(@"%@",self.navigationController);
-    NSLog(@"%@",self.tabBarController);
-    NSLog(@"%@",self.parentViewController);
-    NSLog(@"%@",self.childViewControllers);
-    NSLog(@"%@",self.navigationController.parentViewController);
-    
-    NSLog(@"%@",self.presentingViewController);
-    
+    UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMethod)];
+    [self.view addGestureRecognizer:tapGesture];
 }
 
 
 -(void)tapMethod
 {
-    //打开地图 app
-    [[APPNavigator shareAPPNavigator] openUrl:@"maps://"];
+    [[APPNavigator  shareAPPNavigator] popComponentAnimated:YES];
 }
 
 @end

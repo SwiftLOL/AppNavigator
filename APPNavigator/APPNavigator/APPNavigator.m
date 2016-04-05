@@ -7,12 +7,25 @@
 //
 
 #import "APPNavigator.h"
-
-
-
-
+#import <objc/runtime.h>
 
 @implementation UIViewController (APPNavigator)
+
++(void)initialize
+{
+    NSString *className=NSStringFromClass([self class]);
+    APPNavigator *appNavigator=[APPNavigator shareAPPNavigator];
+    [appNavigator registerComponentWithComponentName:[self registerComponentName] withClassName:className];
+}
+
+
+
++(NSString *)registerComponentName
+{
+    return [NSStringFromClass([self class]) lowercaseString];
+}
+
+
 
 -(nonnull instancetype) initWithParams:(nullable NSDictionary *)params
 {
@@ -36,10 +49,7 @@
 @property(nonatomic,strong,nonnull) NSMutableArray       *componentArray;
 //component 到 UIViewController的映射集合
 @property(nonatomic,strong,nonnull) NSMutableDictionary  *componentToViewControllerMaps;
-//component 及其主键参数的映射集合
-@property(nonatomic,strong,nonnull) NSMutableDictionary  *componentPrimarykeyMaps;
-//component 及其相应参数的映射集合
-@property(nonatomic,strong,nonnull) NSMutableDictionary  *componentRequiredParamsMaps;
+
 //用于获取某个容器控制器当前展示的是哪个子控制器
 @property(nonatomic,strong,nonnull) NSMutableDictionary  *whichChildComponentInWindowSelectorNameMaps;
 //当前appDelegate 的 window
@@ -66,6 +76,14 @@
 }
 
 
+-(void)createViewControllerByClassNames:(NSArray *)classNames
+{
+    for (NSString *className in classNames) {
+        Class c=NSClassFromString(className);
+        [c initialize];
+    }
+}
+
 
 -(instancetype)init
 {
@@ -75,8 +93,6 @@
         self.scheme=nil;
         self.componentArray=[NSMutableArray arrayWithArray:@[]];
         self.componentToViewControllerMaps=[NSMutableDictionary dictionaryWithDictionary:@{}];
-        self.componentPrimarykeyMaps=[NSMutableDictionary dictionaryWithDictionary:@{}];
-        self.componentRequiredParamsMaps=[NSMutableDictionary dictionaryWithDictionary:@{}];
         self.whichChildComponentInWindowSelectorNameMaps=[NSMutableDictionary dictionaryWithDictionary:@{}];
         self.window=nil;
     }
@@ -101,49 +117,21 @@
 
 
 
-//  /componentName/:requiredParamsList(:requiredParam1(PK):requiredParam2)
--(void)registerComponentWithComponentFormat:(nonnull NSString *)componentFormat withComponentName:(nonnull NSString *) componentClassName
+
+-(void)registerComponentWithComponentName:(nonnull NSString *)componentName withClassName:(nonnull NSString *)className
 {
-    APPNavigatorAssert(componentFormat, @"组件格式不能为空");
-    APPNavigatorAssert(componentClassName, @"组件对应ViewController类名不能为空");
-    
-    NSArray *array=[componentFormat componentsSeparatedByString:@":"];
-    NSString *componentName = [array[0] substringWithRange:NSMakeRange(1, [array[0] length]-2)];
+    APPNavigatorAssert(componentName, @"组件格式不能为空");
+    APPNavigatorAssert(className, @"组件对应ViewController类名不能为空");
     
     if([[APPNavigator shareAPPNavigator].componentToViewControllerMaps objectForKey:componentName])
     {
-        APPNavigatorAssert(!componentName, @"该组件已经注册过了");
-    }else
-    {
-        NSString *primaryKey = nil;
-        NSMutableArray *requiredParams=[NSMutableArray arrayWithArray:@[]];
-        
-        if(array.count>1)
-        {
-            for (int i=1; i<array.count; i++) {
-                NSString *tempString=array[i];
-                if([tempString hasSuffix:@"(PK)"])
-                    primaryKey=[tempString substringToIndex:tempString.length-4];
-                else
-                    [requiredParams addObject:tempString];
-            }
-        }
+        return;
+    }else{
         [self.componentArray addObject:componentName];
-        [self.componentToViewControllerMaps setObject:componentClassName forKey:componentName];
-        
-        if(primaryKey)
-        {
-            [self.componentPrimarykeyMaps setObject:primaryKey forKey:componentName];
-        }
-        
-        if(requiredParams.count>0)
-        {
-            [self.componentRequiredParamsMaps setObject:requiredParams forKey:componentName];
-        }
-
+        [self.componentToViewControllerMaps setObject:className forKey:componentName];
     }
-    
 }
+
 
 
 -(void)registerMethodForGetWhichChildInWindow:(nullable SEL) selector ComponentOfClassName:(nullable NSString *)className
@@ -154,7 +142,7 @@
     NSString *selectorName=[self.whichChildComponentInWindowSelectorNameMaps objectForKey:className];
     if(selectorName)
     {
-        APPNavigatorAssert(!selectorName, @"selector 已经注册过了");
+        return;
     }
 
     [self.whichChildComponentInWindowSelectorNameMaps setValue:NSStringFromSelector(selector) forKey:className];

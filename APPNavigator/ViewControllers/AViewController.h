@@ -1,12 +1,14 @@
 //
 //  AViewController.h
-//  chineseBoy0822
+//  APPNavigator
 //
-//  Created by 王佳佳 on 16/3/2.
-//  Copyright © 2016年 chineseBoy. All rights reserved.
+//  Created by wangJiaJia on 16/4/4.
+//  Copyright © 2016年 王佳佳. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
+
 
 @interface AViewController : UIViewController
 

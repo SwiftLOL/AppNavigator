@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E15250191CB177DD00A9E826 /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15250181CB177DD00A9E826 /* AViewController.m */; };
+		E152501C1CB178AE00A9E826 /* BViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E152501B1CB178AE00A9E826 /* BViewController.m */; };
+		E152501F1CB178E800A9E826 /* CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E152501E1CB178E800A9E826 /* CViewController.m */; };
 		E1AC2AD51C9F949000A94556 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2AD41C9F949000A94556 /* main.m */; };
 		E1AC2AD81C9F949000A94556 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2AD71C9F949000A94556 /* AppDelegate.m */; };
 		E1AC2AE01C9F949000A94556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2ADF1C9F949000A94556 /* Assets.xcassets */; };
@@ -27,13 +30,15 @@
 		E1AC2B191C9F954900A94556 /* Default-iOS8-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B081C9F954900A94556 /* Default-iOS8-667h@2x.png */; };
 		E1AC2B1A1C9F954900A94556 /* Default-iOS8-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B091C9F954900A94556 /* Default-iOS8-736h@3x.png */; };
 		E1AC2B1B1C9F954900A94556 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B0A1C9F954900A94556 /* Default.png */; };
-		E1AC2B261C9F95DC00A94556 /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2B1E1C9F95DC00A94556 /* AViewController.m */; };
-		E1AC2B271C9F95DC00A94556 /* BViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2B201C9F95DC00A94556 /* BViewController.m */; };
-		E1AC2B281C9F95DC00A94556 /* CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2B231C9F95DC00A94556 /* CViewController.m */; };
-		E1AC2B291C9F95DC00A94556 /* DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2B251C9F95DC00A94556 /* DViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E15250171CB177DD00A9E826 /* AViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AViewController.h; sourceTree = "<group>"; };
+		E15250181CB177DD00A9E826 /* AViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AViewController.m; sourceTree = "<group>"; };
+		E152501A1CB178AE00A9E826 /* BViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BViewController.h; sourceTree = "<group>"; };
+		E152501B1CB178AE00A9E826 /* BViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BViewController.m; sourceTree = "<group>"; };
+		E152501D1CB178E800A9E826 /* CViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CViewController.h; sourceTree = "<group>"; };
+		E152501E1CB178E800A9E826 /* CViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CViewController.m; sourceTree = "<group>"; };
 		E1AC2AD01C9F949000A94556 /* APPNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APPNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1AC2AD41C9F949000A94556 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E1AC2AD61C9F949000A94556 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -58,14 +63,6 @@
 		E1AC2B081C9F954900A94556 /* Default-iOS8-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iOS8-667h@2x.png"; sourceTree = "<group>"; };
 		E1AC2B091C9F954900A94556 /* Default-iOS8-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iOS8-736h@3x.png"; sourceTree = "<group>"; };
 		E1AC2B0A1C9F954900A94556 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		E1AC2B1D1C9F95DC00A94556 /* AViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AViewController.h; sourceTree = "<group>"; };
-		E1AC2B1E1C9F95DC00A94556 /* AViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AViewController.m; sourceTree = "<group>"; };
-		E1AC2B1F1C9F95DC00A94556 /* BViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BViewController.h; sourceTree = "<group>"; };
-		E1AC2B201C9F95DC00A94556 /* BViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BViewController.m; sourceTree = "<group>"; };
-		E1AC2B221C9F95DC00A94556 /* CViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CViewController.h; sourceTree = "<group>"; };
-		E1AC2B231C9F95DC00A94556 /* CViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CViewController.m; sourceTree = "<group>"; };
-		E1AC2B241C9F95DC00A94556 /* DViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DViewController.h; sourceTree = "<group>"; };
-		E1AC2B251C9F95DC00A94556 /* DViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,24 +158,14 @@
 		E1AC2B1C1C9F95DC00A94556 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E1AC2B1D1C9F95DC00A94556 /* AViewController.h */,
-				E1AC2B1E1C9F95DC00A94556 /* AViewController.m */,
-				E1AC2B1F1C9F95DC00A94556 /* BViewController.h */,
-				E1AC2B201C9F95DC00A94556 /* BViewController.m */,
-				E1AC2B211C9F95DC00A94556 /* Custom */,
-				E1AC2B221C9F95DC00A94556 /* CViewController.h */,
-				E1AC2B231C9F95DC00A94556 /* CViewController.m */,
-				E1AC2B241C9F95DC00A94556 /* DViewController.h */,
-				E1AC2B251C9F95DC00A94556 /* DViewController.m */,
+				E15250171CB177DD00A9E826 /* AViewController.h */,
+				E15250181CB177DD00A9E826 /* AViewController.m */,
+				E152501A1CB178AE00A9E826 /* BViewController.h */,
+				E152501B1CB178AE00A9E826 /* BViewController.m */,
+				E152501D1CB178E800A9E826 /* CViewController.h */,
+				E152501E1CB178E800A9E826 /* CViewController.m */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		E1AC2B211C9F95DC00A94556 /* Custom */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,12 +252,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1AC2B261C9F95DC00A94556 /* AViewController.m in Sources */,
+				E15250191CB177DD00A9E826 /* AViewController.m in Sources */,
 				E1AC2B141C9F954900A94556 /* APPNavigator.m in Sources */,
-				E1AC2B281C9F95DC00A94556 /* CViewController.m in Sources */,
+				E152501F1CB178E800A9E826 /* CViewController.m in Sources */,
 				E1AC2AD81C9F949000A94556 /* AppDelegate.m in Sources */,
-				E1AC2B271C9F95DC00A94556 /* BViewController.m in Sources */,
-				E1AC2B291C9F95DC00A94556 /* DViewController.m in Sources */,
+				E152501C1CB178AE00A9E826 /* BViewController.m in Sources */,
 				E1AC2AD51C9F949000A94556 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

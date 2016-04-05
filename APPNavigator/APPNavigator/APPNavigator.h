@@ -9,7 +9,23 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
-@interface UIViewController (APPNavigator)
+
+
+
+
+
+@protocol APPNavigatorProtocol <NSObject>
+
+@required
++(nonnull NSString *)registerComponentName;
+@optional
++(nullable NSDictionary *)registerParams;
++(nullable NSString *)registerPrimaryKey;
+
+@end
+
+
+@interface UIViewController (APPNavigator)<APPNavigatorProtocol>
 
 -(nonnull instancetype ) initWithParams:(nullable NSDictionary *)params;
 
@@ -26,10 +42,16 @@ Stuff; \
 _Pragma("clang diagnostic pop") \
 } while (0)
 
+
+
+#define export_module(a)                 
+
 @interface APPNavigator : NSObject
 
 //application路由器单例
 +(nonnull instancetype) shareAPPNavigator;
+
+-(void)createViewControllerByClassNames:(nullable NSArray *)classNames;
 
 //注册当前app scheme  依赖注入appDelegate,以便操控整个app视图层次结构
 -(void) registerAPPScheme:(nonnull NSString *) scheme  window:(nonnull UIWindow *) window;
@@ -38,7 +60,7 @@ _Pragma("clang diagnostic pop") \
    注册组件格式: /componentName/:requiredParamsList(:requiredParam1(PK):requiredParam2)
    PK 表示该组件的主键属性
 */
--(void)registerComponentWithComponentFormat:(nonnull NSString *)componentFormat withComponentName:(nonnull NSString *) componentClassName;
+-(void)registerComponentWithComponentName:(nonnull NSString *)componentName withClassName:(nonnull NSString *)ClassName;
 
 //register selector for component which used for get the most top child view controller
 -(void)registerMethodForGetWhichChildInWindow:(nullable SEL) selector ComponentOfClassName:(nullable NSString *)className;

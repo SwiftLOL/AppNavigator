@@ -1,39 +1,39 @@
 //
 //  BViewController.m
-//  chineseBoy0822
+//  APPNavigator
 //
-//  Created by 王佳佳 on 16/3/2.
-//  Copyright © 2016年 chineseBoy. All rights reserved.
+//  Created by wangJiaJia on 16/4/4.
+//  Copyright © 2016年 王佳佳. All rights reserved.
 //
 
 #import "BViewController.h"
 #import "APPNavigator.h"
 
-@interface BViewController ()
-
-@end
-
 @implementation BViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.title=@"B";
-    self.view.backgroundColor=[UIColor blueColor];
-    
-    UITapGestureRecognizer *tapGestureRecognizer=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMethod)];
-    [self.view addGestureRecognizer:tapGestureRecognizer];
-    
++(NSString *)registerComponentName
+{
+    return @"b";
 }
 
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    self.title=@"b";
+    
+    self.view.backgroundColor=[UIColor yellowColor];
+    
+    
+    UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMethod)];
+    [self.view addGestureRecognizer:tapGesture];
+}
 
 
 -(void)tapMethod
 {
-    [[APPNavigator shareAPPNavigator] presentComponentOfUrl:@"/DComponent" otherParams:nil animated:YES completion:NULL];
-
+    [[APPNavigator shareAPPNavigator] presentComponentOfUrl:@"/c" otherParams:nil animated:YES completion:NULL];
 }
-
 
 @end

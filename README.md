@@ -12,6 +12,14 @@
 * 设计的过程中，假设了任何presentedViewController都在UINavigationcontroller中，以便在presentedViewController上可以进行push操作。
 
 
+
+##note
+   目前没用上scheme,因为可能会影响到后续的功能开发。目前使用不完全url格式:
+   
+       /componentName?arg1=value1&arg2=value2
+
+
+
 ## 使用说明
 * 1.注册scheme，及UIWindow.
  

@@ -2,8 +2,8 @@
 //  APPNavigator.h
 //  chineseBoy0822
 //
-//  Created by 王佳佳 on 16/3/2.
-//  Copyright © 2016年 chineseBoy. All rights reserved.
+//  Created by SwiftLOL on 16/3/2.
+//  Copyright © 2016年 SwiftLOL. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

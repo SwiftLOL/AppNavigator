@@ -28,7 +28,7 @@
 ```
 * 4.通过url加载组件
 
-           UIViewController *aCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/a?userName=wangjiajia&userId=1" otherParams:nil];
+           UIViewController *aCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/a?userName=swiftlol&userId=1" otherParams:nil];
 
 * 5.通过push/present方法展示组件
            

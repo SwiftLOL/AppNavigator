@@ -56,4 +56,4 @@
      [[APPNavigator shareAPPNavigator] openUrl:@"maps://"];
 ```
 
-### 其他功能详看源代码，更多功能待开发中。。。。        
+### 更多功能开发中。。。。        

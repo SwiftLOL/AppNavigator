@@ -46,6 +46,8 @@
 
 * 8 使用openUrl打开其他app
 
-       [[APPNavigator shareAPPNavigator] openUrl:@"maps://"];
+```
+     [[APPNavigator shareAPPNavigator] openUrl:@"maps://"];
+```
 
 ### 其他功能详看源代码，更多功能待开发中。。。。        

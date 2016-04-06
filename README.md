@@ -33,11 +33,19 @@
 * 5.通过push/present方法展示组件
            
             [[APPNavigator shareAPPNavigator] pushComponentOfUrl:@"/c" otherParams:nil animated:YES];
+           
+            [[APPNavigator shareAPPNavigator] presentComponentOfUrl:@"/c" otherParams:nil animated:YES completion:NULL];
 
 
-* 6.通过pop移除组件
+* 6.通过pop移除当前组件
            
             [[APPNavigator  shareAPPNavigator] popComponentAnimated:YES];
+* 7 移除当前整个presenting链
 
+               [[APPNavigator shareAPPNavigator] popToPresentingComponentAnimated:YES completion:NULL];
+
+* 8 使用openUrl打开其他app
+
+       [[APPNavigator shareAPPNavigator] openUrl:@"maps://"];
 
 ### 其他功能详看源代码，更多功能待开发中。。。。        

@@ -4,7 +4,12 @@
 ## Overview
 
 **APPNavigator**是用于UIViewController间解耦，通过url实现UIViewController间跳转的中间件。
-**AppNavigator**中不耦合任何的容器控制器，不持有整个控制器层次结构,所以不需要担心控制器的内存管理。通过注册进来的window在控制器层次中进行push\pop\present。适用于window.rootViewController为任何类型的容器控制器(UITabBarController\UINavigationController etc)。是设计的过程中，假设了任何presentedViewController都在UINavigationcontroller中，以便在presentedViewController上可以进行push操作。
+
+**AppNavigator**中不耦合任何的容器控制器，不持有整个控制器层次结构,所以不需要担心控制器的内存管理。通过注册进来的window在控制器层次中进行push\pop\present。
+
+适用于window.rootViewController为任何类型的容器控制器(UITabBarController\UINavigationController etc)。
+
+设计的过程中，假设了任何presentedViewController都在UINavigationcontroller中，以便在presentedViewController上可以进行push操作。
 
 
 ## 使用说明

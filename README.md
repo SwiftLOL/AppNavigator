@@ -21,7 +21,7 @@
           
           [[APPNavigator shareAPPNavigator] loadViewControllerByClassNames:@[@"AViewController",@"BViewController",@"CViewController"]];
 
-* 3.每个子类需要遵循下面的协议，用于自定义组件名、参数、主键等信息
+* 3.每个自定义UIViewController子类需要遵循下面的协议，用于自定义组件名、参数、主键等信息
 
 ```         
       @protocol APPNavigatorProtocol<NSObject>

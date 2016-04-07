@@ -40,25 +40,34 @@
       +(nullable NSString *)registerPrimaryKey;
      @end
 ```
-* 4.通过url加载组件
+
+* 4  注册容器控制器的方法－－－用于获取当前展示的是哪个子控制器
+ 
+```  
+[[APPNavigator shareAPPNavigator] registerMethodForGetWhichChildInWindow:@selector(topViewController) ComponentOfClassName:NSStringFromClass([UINavigationController class])];
+
+[[APPNavigator shareAPPNavigator] registerMethodForGetWhichChildInWindow:@selector(selectedViewController) ComponentOfClassName:NSStringFromClass([UITabBarController class])];
+ ```
+   
+* 5.通过url加载组件
 
            UIViewController *aCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/a?userName=swiftlol&userId=1" otherParams:nil];
 
-* 5.通过push/present方法展示组件
+* 6.通过push/present方法展示组件
            
             [[APPNavigator shareAPPNavigator] pushComponentOfUrl:@"/c" otherParams:nil animated:YES];
            
             [[APPNavigator shareAPPNavigator] presentComponentOfUrl:@"/c" otherParams:nil animated:YES completion:NULL];
 
 
-* 6.通过pop移除当前组件
+* 7.通过pop移除当前组件
            
             [[APPNavigator  shareAPPNavigator] popComponentAnimated:YES];
-* 7 移除当前整个presenting链
+* 8 移除当前整个presenting链
 
                [[APPNavigator shareAPPNavigator] popToPresentingComponentAnimated:YES completion:NULL];
 
-* 8 使用openUrl打开其他app
+* 9 使用openUrl打开其他app
 
 ```
      [[APPNavigator shareAPPNavigator] openUrl:@"maps://"];

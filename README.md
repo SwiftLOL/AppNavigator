@@ -48,7 +48,7 @@
       @optional
       +(nullable NSDictionary *)registerParams;
       +(nullable NSString *)registerPrimaryKey;
-     @end
+      @end
 ```
 
 * 4  注册容器控制器的方法－－－用于获取当前展示的是哪个子控制器

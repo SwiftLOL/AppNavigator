@@ -18,6 +18,7 @@
 
 @required
 +(nonnull NSString *)registerComponentName;
+-(nonnull instancetype) initWithParams:(nullable NSDictionary *)params;
 @optional
 +(nullable NSDictionary *)registerParams;
 +(nullable NSString *)registerPrimaryKey;
@@ -26,8 +27,6 @@
 
 
 @interface UIViewController (APPNavigator)<APPNavigatorProtocol>
-
--(nonnull instancetype ) initWithParams:(nullable NSDictionary *)params;
 
 @end
 

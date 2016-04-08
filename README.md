@@ -38,12 +38,13 @@
 
 ```
 
-* 3.每个自定义UIViewController子类需要遵循下面的协议，用于自定义组件名、参数、主键等信息
+* 3.每个自定义UIViewController子类需要遵循下面的协议，用于自定义组件名、初始化、参数、主键等信息
 
 ```         
       @protocol APPNavigatorProtocol<NSObject>
       @required
       +(nonnull NSString *)registerComponentName;
+      -(nonnull instancetype) initWithParams:(nullable NSDictionary *)params;
       @optional
       +(nullable NSDictionary *)registerParams;
       +(nullable NSString *)registerPrimaryKey;

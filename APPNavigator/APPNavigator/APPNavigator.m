@@ -295,7 +295,8 @@
         {
             NSString *seletor=nil;
             for (NSString *key in self.whichChildComponentInWindowSelectorNameMaps) {
-                if([key isEqualToString:NSStringFromClass([topViewCtr class])])
+                Class keyClass = NSClassFromString(key);
+                if(keyClass&&[topViewCtr isKindOfClass:keyClass])
                 {
                     seletor=[self.whichChildComponentInWindowSelectorNameMaps objectForKey:key];
                     if([topViewCtr respondsToSelector:NSSelectorFromString(seletor)])

@@ -2,8 +2,8 @@
 //  APPNavigator.m
 //  chineseBoy0822
 //
-//  Created by SwiftLOL on 16/3/2.
-//  Copyright © 2016年 SwiftLOL. All rights reserved.
+//  Created by 王佳佳 on 16/3/2.
+//  Copyright © 2016年 chineseBoy. All rights reserved.
 //
 
 #import "APPNavigator.h"
@@ -14,29 +14,95 @@
 +(void)initialize
 {
     NSString *className=NSStringFromClass([self class]);
-    APPNavigator *appNavigator=[APPNavigator shareAPPNavigator];
+    APPNavigator *appNavigator=[APPNavigator shareInstance];
     [appNavigator registerComponentWithComponentName:[self registerComponentName] withClassName:className];
+    [appNavigator registerMethodForGetWhichChildInWindow:[self registerSelectorForGetTopViewController] ComponentOfClassName:className];
 }
 
 
 
 +(NSString *)registerComponentName
 {
-    return [NSStringFromClass([self class]) lowercaseString];
+    NSString *name=[NSStringFromClass([self class]) lowercaseString];
+    
+    if([name hasPrefix:@"ui"])
+    {
+        name=[name substringFromIndex:2];
+    }
+    
+    if([name hasSuffix:@"controller"])
+    {
+        name=[name substringToIndex:name.length-10];
+    }
+    
+    if([name hasSuffix:@"view"])
+    {
+        name=[name substringToIndex:name.length-4];
+    }
+    
+    if([name isEqualToString:@""])
+    {
+       name=@"vc";
+    }
+    
+    return name;
 }
 
 
 
--(nonnull instancetype) initWithParams:(nullable NSDictionary *)params
+
+
++(nullable id)viewControllerWithParams:(nullable NSDictionary *)params
 {
-    self =[self init];
-  
-    return self;
+    return [[[self class] alloc] init];
+}
+
+
+
+
++(nullable NSDictionary *)registerParams
+{
+    return nil;
+}
+
+
+
+
+
++(nullable NSString *)registerPrimaryKey
+{
+    return nil;
+}
+
+
++(SEL)registerSelectorForGetTopViewController
+{
+    return nil;
 }
 
 @end
 
 
+
+@implementation UINavigationController (APPNavigator)
+
++(SEL)registerSelectorForGetTopViewController
+{
+    return  @selector(topViewController);
+}
+
+@end
+
+
+
+@implementation UITabBarController (APPNavigator)
+
++(SEL)registerSelectorForGetTopViewController
+{
+    return  @selector(selectedViewController);
+}
+
+@end
 
 
 
@@ -64,7 +130,7 @@
 #pragma mark -- 单例
 
 //获取单例
-+(nonnull instancetype) shareAPPNavigator
++(nonnull instancetype) shareInstance
 {
     static APPNavigator *appNavigator = nil;
     static dispatch_once_t predicate;
@@ -76,7 +142,7 @@
 }
 
 
--(void)loadViewControllerByClassNames:(NSArray *)classNames
+-(void)createViewControllerByClassNames:(NSArray *)classNames
 {
     for (NSString *className in classNames) {
         Class c=NSClassFromString(className);
@@ -123,7 +189,7 @@
     APPNavigatorAssert(componentName, @"组件格式不能为空");
     APPNavigatorAssert(className, @"组件对应ViewController类名不能为空");
     
-    if([[APPNavigator shareAPPNavigator].componentToViewControllerMaps objectForKey:componentName])
+    if([[APPNavigator shareInstance].componentToViewControllerMaps objectForKey:componentName])
     {
         NSString *warning=[NSString stringWithFormat:@"该组件%@已经注册过了",className];
         APPNavigatorAssert(className, warning);;
@@ -137,6 +203,9 @@
 
 -(void)registerMethodForGetWhichChildInWindow:(nullable SEL) selector ComponentOfClassName:(nullable NSString *)className
 {
+    if (!selector) {
+        return;
+    }
     APPNavigatorAssert(className, @"class name 不能为空");
     APPNavigatorAssert(selector, @"selector 不能为空");
     
@@ -190,7 +259,7 @@
         }
     }
     
-    viewController=[[NSClassFromString(componentClassName) alloc] initWithParams:mutabledic];
+    viewController=[NSClassFromString(componentClassName) viewControllerWithParams:mutabledic];
     
     return viewController;
 }
@@ -235,6 +304,34 @@
     
     [topViewController presentViewController:navigationCtr animated:animated completion:completion];
 }
+
+
+
+
+
+-(void)pushComponentOfViewController:(nonnull UIViewController *)controller
+                            animated:(BOOL)animated
+{
+    UIViewController *topViewController=[self topViewController];
+    
+    [topViewController.navigationController pushViewController:controller animated:animated];
+}
+
+
+
+
+-(void)presentComponentOfViewController:(nonnull UIViewController *)controller
+                               animated:(BOOL)animated completion:(void (^ __nullable)(void))completion
+{
+
+    UIViewController *topViewController=[self topViewController];
+    
+    UINavigationController *navigationCtr=[[UINavigationController alloc] initWithRootViewController:controller];
+    
+    [topViewController presentViewController:navigationCtr animated:animated completion:completion];
+
+}
+
 
 
 #pragma mark --  pop
@@ -295,8 +392,7 @@
         {
             NSString *seletor=nil;
             for (NSString *key in self.whichChildComponentInWindowSelectorNameMaps) {
-                Class keyClass = NSClassFromString(key);
-                if(keyClass&&[topViewCtr isKindOfClass:keyClass])
+                if([topViewCtr isKindOfClass:NSClassFromString(key)])
                 {
                     seletor=[self.whichChildComponentInWindowSelectorNameMaps objectForKey:key];
                     if([topViewCtr respondsToSelector:NSSelectorFromString(seletor)])

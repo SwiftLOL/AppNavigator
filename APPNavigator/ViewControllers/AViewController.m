@@ -38,7 +38,7 @@
 
 -(void)tapMethod
 {
-    [[APPNavigator shareAPPNavigator] pushComponentOfUrl:@"/c" otherParams:nil animated:YES];
+    [[APPNavigator shareInstance] pushComponentOfUrl:@"/c" otherParams:nil animated:YES];
 }
 @end
 

@@ -2,8 +2,8 @@
 //  APPNavigator.h
 //  chineseBoy0822
 //
-//  Created by SwiftLOL on 16/3/2.
-//  Copyright © 2016年 SwiftLOL. All rights reserved.
+//  Created by 王佳佳 on 16/3/2.
+//  Copyright © 2016年 chineseBoy. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -17,15 +17,18 @@
 
 @required
 +(nonnull NSString *)registerComponentName;
--(nonnull instancetype) initWithParams:(nullable NSDictionary *)params;
++(nullable id)viewControllerWithParams:(nullable NSDictionary *)params;
+
 @optional
-+(nullable NSDictionary *)registerParams;
++(nullable SEL)registerSelectorForGetTopViewController;
 +(nullable NSString *)registerPrimaryKey;
++(nullable NSDictionary *)registerParams;
 
 @end
 
 
 @interface UIViewController (APPNavigator)<APPNavigatorProtocol>
+
 
 @end
 
@@ -41,12 +44,15 @@ _Pragma("clang diagnostic pop") \
 } while (0)
 
 
+
+#define export_module(a)                 
+
 @interface APPNavigator : NSObject
 
 //application路由器单例
-+(nonnull instancetype) shareAPPNavigator;
++(nonnull instancetype) shareInstance;
 
--(void)loadViewControllerByClassNames:(nullable NSArray *)classNames;
+-(void)createViewControllerByClassNames:(nullable NSArray *)classNames;
 
 //注册当前app scheme  依赖注入appDelegate,以便操控整个app视图层次结构
 -(void) registerAPPScheme:(nonnull NSString *) scheme  window:(nonnull UIWindow *) window;
@@ -65,15 +71,26 @@ _Pragma("clang diagnostic pop") \
 -(nonnull UIViewController *)componentOfUrl:(nonnull NSString *)url  otherParams:(nullable NSDictionary *)otherParams;
 
 
-//push 一个view controller
+//push view controller  by  url
 -(void)pushComponentOfUrl:(nonnull NSString *)url
                              otherParams:(nullable NSDictionary *)otherParams
                              animated:(BOOL)animated;
 
-//present一个view controller
+//present  view controller by url
 -(void)presentComponentOfUrl:(nonnull NSString *)url
                              otherParams:(nullable NSDictionary *)otherParams
                              animated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
+
+
+//push view controller
+-(void)pushComponentOfViewController:(nonnull UIViewController *)controller
+                 animated:(BOOL)animated;
+
+//present  view controller
+-(void)presentComponentOfViewController:(nonnull UIViewController *)controller
+                    animated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
+
+
 
 //返回到前一个画面
 -(void) popComponentAnimated:(BOOL) animated;
@@ -86,5 +103,6 @@ _Pragma("clang diagnostic pop") \
 
 //打开第三方app
 -(void) openUrl:(nonnull NSString *) url;
+
 
 @end

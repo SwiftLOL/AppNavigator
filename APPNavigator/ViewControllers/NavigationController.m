@@ -15,10 +15,10 @@
 @implementation NavigationController
 
 
--(instancetype)initWithParams:(NSDictionary *)params
++(nullable id)viewControllerWithParams:(nullable NSDictionary *)params
 {
-    self=[self initWithRootViewController:[params objectForKey:@"root"]];
-    return self;
+    UIViewController *vCtr=[[self alloc] initWithRootViewController:[params objectForKey:@"root"]];
+    return vCtr;
 }
 
 

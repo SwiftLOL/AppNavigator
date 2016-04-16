@@ -20,21 +20,18 @@
     self.window.backgroundColor=[UIColor blackColor];
     
     //注册app内跳转scheme及主window
-    [[APPNavigator shareAPPNavigator] registerAPPScheme:@"SwiftLOL" window:self.window];
+    [[APPNavigator shareInstance] registerAPPScheme:@"SwiftLOL" window:self.window];
     //通过类名注册所有类
-    [[APPNavigator shareAPPNavigator] loadViewControllerByClassNames:@[@"TabBarController",@"NavigationController",@"AViewController",@"BViewController",@"CViewController"]];
-    //注册容器控制器 获取当前显示的子控制器的方法
-    [[APPNavigator shareAPPNavigator] registerMethodForGetWhichChildInWindow:@selector(topViewController) ComponentOfClassName:NSStringFromClass([UINavigationController class])];
-    [[APPNavigator shareAPPNavigator] registerMethodForGetWhichChildInWindow:@selector(selectedViewController) ComponentOfClassName:NSStringFromClass([UITabBarController class])];
+    [[APPNavigator shareInstance] createViewControllerByClassNames:@[@"TabBarController",@"NavigationController",@"AViewController",@"BViewController",@"CViewController"]];
     
     //通过url生成相应组件
-    UIViewController *aCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/a" otherParams:nil];
-    UIViewController *aContainer=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/navi" otherParams:@{@"root":aCtr}];
+    UIViewController *aCtr=[[APPNavigator shareInstance] componentOfUrl:@"/a" otherParams:nil];
+    UIViewController *aContainer=[[APPNavigator shareInstance] componentOfUrl:@"/navi" otherParams:@{@"root":aCtr}];
     
-    UIViewController *bCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/b" otherParams:nil];
-    UIViewController *bContainer=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/navi" otherParams:@{@"root":bCtr}];
+    UIViewController *bCtr=[[APPNavigator shareInstance] componentOfUrl:@"/b" otherParams:nil];
+    UIViewController *bContainer=[[APPNavigator shareInstance] componentOfUrl:@"/navi" otherParams:@{@"root":bCtr}];
     
-    UIViewController *rootCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/tabBar"  otherParams:@{@"viewControllers":@[aContainer,bContainer]}];
+    UIViewController *rootCtr=[[APPNavigator shareInstance] componentOfUrl:@"/tabBarVC"  otherParams:@{@"viewControllers":@[aContainer,bContainer]}];
     
     self.window.rootViewController=rootCtr;
     [self.window makeKeyAndVisible];

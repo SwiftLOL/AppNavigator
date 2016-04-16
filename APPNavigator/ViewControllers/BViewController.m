@@ -33,7 +33,7 @@
 
 -(void)tapMethod
 {
-    [[APPNavigator shareAPPNavigator] presentComponentOfUrl:@"/c" otherParams:nil animated:YES completion:NULL];
+    [[APPNavigator shareInstance] presentComponentOfUrl:@"/c" otherParams:nil animated:YES completion:NULL];
 }
 
 @end

@@ -15,20 +15,17 @@
 @implementation TabBarController
 
 
--(id)initWithParams:(NSDictionary *)params
++(nullable id)viewControllerWithParams:(nullable NSDictionary *)params
 {
-    self=[self init];
-    if(self)
-    {
-        self.viewControllers=[params objectForKey:@"viewControllers"];
-    }
-    return self;
+    TabBarController *tabBarCtr=[[self alloc] init];
+    tabBarCtr.viewControllers=[params objectForKey:@"viewControllers"];
+    return tabBarCtr;
 }
 
 
 +(NSString *)registerComponentName
 {
-    return @"tabBar";
+    return @"tabBarVC";
 }
 
 @end

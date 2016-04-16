@@ -34,7 +34,7 @@
 
 -(void)tapMethod
 {
-    [[APPNavigator  shareAPPNavigator] popComponentAnimated:YES];
+    [[APPNavigator  shareInstance] popComponentAnimated:YES];
 }
 
 @end

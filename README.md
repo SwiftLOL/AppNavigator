@@ -34,7 +34,7 @@
 * 2.通过类名，动态加载UIViewController子类的类对象。
 
 ```
-[[APPNavigator shareAPPNavigator] loadViewControllerByClassNames:@[@"AViewController",@"BViewController",@"CViewController"]];
+[[APPNavigator shareInstance] createViewControllerByClassNames:@[@"AViewController",@"BViewController",@"CViewController"]];
 
 ```
 
@@ -44,28 +44,21 @@
       @protocol APPNavigatorProtocol<NSObject>
       @required
       +(nonnull NSString *)registerComponentName;
-      -(nonnull instancetype) initWithParams:(nullable NSDictionary *)params;
+     +(nullable id)viewControllerWithParams:(nullable NSDictionary *)params;
       @optional
+      +(nullable SEL)registerSelectorForGetTopViewController;
       +(nullable NSDictionary *)registerParams;
       +(nullable NSString *)registerPrimaryKey;
       @end
 ```
-
-* 4  注册容器控制器的方法－－－用于获取当前展示的是哪个子控制器
- 
-```  
-[[APPNavigator shareAPPNavigator] registerMethodForGetWhichChildInWindow:@selector(topViewController) ComponentOfClassName:NSStringFromClass([UINavigationController class])];
-
-[[APPNavigator shareAPPNavigator] registerMethodForGetWhichChildInWindow:@selector(selectedViewController) ComponentOfClassName:NSStringFromClass([UITabBarController class])];
- ```
    
-* 5.通过url加载组件
+* 4.通过url加载组件
 
 ```
 UIViewController *aCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/a?userName=swiftlol&userId=1" otherParams:nil];
 
 ```
-* 6.通过push/present方法展示组件
+* 5.通过push/present方法展示组件
        
 ```    
 [[APPNavigator shareAPPNavigator] pushComponentOfUrl:@"/c" otherParams:nil animated:YES];
@@ -74,20 +67,20 @@ UIViewController *aCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/a?use
 
 ```
 
-* 7.通过pop移除当前组件
+* 6.通过pop移除当前组件
 
 ```           
 [[APPNavigator  shareAPPNavigator] popComponentAnimated:YES];
 
 ```
-* 8 移除当前整个presenting链
+* 7 移除当前整个presenting链
 
 ```
 [[APPNavigator shareAPPNavigator] popToPresentingComponentAnimated:YES completion:NULL];
 
 ```
 
-* 9 使用openUrl打开其他app
+* 8 使用openUrl打开其他app
 
 ```
      [[APPNavigator shareAPPNavigator] openUrl:@"maps://"];

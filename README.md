@@ -55,35 +55,35 @@
 * 4.通过url加载组件
 
 ```
-UIViewController *aCtr=[[APPNavigator shareAPPNavigator] componentOfUrl:@"/a?userName=swiftlol&userId=1" otherParams:nil];
+UIViewController *aCtr=[[APPNavigator shareInstance] componentOfUrl:@"/a?userName=swiftlol&userId=1" otherParams:nil];
 
 ```
 * 5.通过push/present方法展示组件
        
 ```    
-[[APPNavigator shareAPPNavigator] pushComponentOfUrl:@"/c" otherParams:nil animated:YES];
+[[APPNavigator shareInstance] pushComponentOfUrl:@"/c" otherParams:nil animated:YES];
            
-[[APPNavigator shareAPPNavigator] presentComponentOfUrl:@"/c" otherParams:nil animated:YES completion:NULL];
+[[APPNavigator shareInstance] presentComponentOfUrl:@"/c" otherParams:nil animated:YES completion:NULL];
 
 ```
 
 * 6.通过pop移除当前组件
 
 ```           
-[[APPNavigator  shareAPPNavigator] popComponentAnimated:YES];
+[[APPNavigator  shareInstance] popComponentAnimated:YES];
 
 ```
 * 7 移除当前整个presenting链
 
 ```
-[[APPNavigator shareAPPNavigator] popToPresentingComponentAnimated:YES completion:NULL];
+[[APPNavigator shareInstance] popToPresentingComponentAnimated:YES completion:NULL];
 
 ```
 
 * 8 使用openUrl打开其他app
 
 ```
-     [[APPNavigator shareAPPNavigator] openUrl:@"maps://"];
+     [[APPNavigator shareInstance] openUrl:@"maps://"];
 ```
 
 ### 更多功能开发中。。。。        

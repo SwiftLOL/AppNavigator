@@ -27,7 +27,7 @@
  
  
 ```
-[[APPNavigator shareAPPNavigator] registerAPPScheme:@"SwiftLOL" window:self.window];
+[[APPNavigator shareInstance] registerAPPScheme:@"SwiftLOL" window:self.window];
  
 ```
       

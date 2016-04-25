@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1394FB31CCDFC8E0013A8B8 /* APPNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = E1394FB21CCDFC8E0013A8B8 /* APPNavigator.m */; };
 		E15250191CB177DD00A9E826 /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15250181CB177DD00A9E826 /* AViewController.m */; };
 		E152501C1CB178AE00A9E826 /* BViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E152501B1CB178AE00A9E826 /* BViewController.m */; };
 		E152501F1CB178E800A9E826 /* CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E152501E1CB178E800A9E826 /* CViewController.m */; };
@@ -22,7 +23,6 @@
 		E1AC2B111C9F954900A94556 /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AFD1C9F954900A94556 /* Icon-Small@3x.png */; };
 		E1AC2B121C9F954900A94556 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AFE1C9F954900A94556 /* Icon.png */; };
 		E1AC2B131C9F954900A94556 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2AFF1C9F954900A94556 /* Icon@2x.png */; };
-		E1AC2B141C9F954900A94556 /* APPNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2B021C9F954900A94556 /* APPNavigator.m */; };
 		E1AC2B151C9F954900A94556 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B041C9F954900A94556 /* Default-568h@2x.png */; };
 		E1AC2B161C9F954900A94556 /* Default-iOS7-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B051C9F954900A94556 /* Default-iOS7-568h@2x.png */; };
 		E1AC2B171C9F954900A94556 /* Default-iOS7@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2B061C9F954900A94556 /* Default-iOS7@2x-1.png */; };
@@ -33,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E1394FB11CCDFC8E0013A8B8 /* APPNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPNavigator.h; sourceTree = "<group>"; };
+		E1394FB21CCDFC8E0013A8B8 /* APPNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPNavigator.m; sourceTree = "<group>"; };
 		E15250171CB177DD00A9E826 /* AViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AViewController.h; sourceTree = "<group>"; };
 		E15250181CB177DD00A9E826 /* AViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AViewController.m; sourceTree = "<group>"; };
 		E152501A1CB178AE00A9E826 /* BViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BViewController.h; sourceTree = "<group>"; };
@@ -54,8 +56,6 @@
 		E1AC2AFD1C9F954900A94556 /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
 		E1AC2AFE1C9F954900A94556 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		E1AC2AFF1C9F954900A94556 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		E1AC2B011C9F954900A94556 /* APPNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APPNavigator.h; sourceTree = "<group>"; };
-		E1AC2B021C9F954900A94556 /* APPNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPNavigator.m; sourceTree = "<group>"; };
 		E1AC2B041C9F954900A94556 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E1AC2B051C9F954900A94556 /* Default-iOS7-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iOS7-568h@2x.png"; sourceTree = "<group>"; };
 		E1AC2B061C9F954900A94556 /* Default-iOS7@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iOS7@2x-1.png"; sourceTree = "<group>"; };
@@ -135,8 +135,8 @@
 		E1AC2B001C9F954900A94556 /* APPNavigator */ = {
 			isa = PBXGroup;
 			children = (
-				E1AC2B011C9F954900A94556 /* APPNavigator.h */,
-				E1AC2B021C9F954900A94556 /* APPNavigator.m */,
+				E1394FB11CCDFC8E0013A8B8 /* APPNavigator.h */,
+				E1394FB21CCDFC8E0013A8B8 /* APPNavigator.m */,
 			);
 			path = APPNavigator;
 			sourceTree = "<group>";
@@ -253,9 +253,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E15250191CB177DD00A9E826 /* AViewController.m in Sources */,
-				E1AC2B141C9F954900A94556 /* APPNavigator.m in Sources */,
 				E152501F1CB178E800A9E826 /* CViewController.m in Sources */,
 				E1AC2AD81C9F949000A94556 /* AppDelegate.m in Sources */,
+				E1394FB31CCDFC8E0013A8B8 /* APPNavigator.m in Sources */,
 				E152501C1CB178AE00A9E826 /* BViewController.m in Sources */,
 				E1AC2AD51C9F949000A94556 /* main.m in Sources */,
 			);

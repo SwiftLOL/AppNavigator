@@ -49,7 +49,7 @@
 
 -(void)tapMethod
 {
-    [[APPNavigator shareInstance] pushComponentOfUrl:[NSString urlWithComponentName:@"c" KeysAndParams:nil] animated:YES];
+    [[APPNavigator shareInstance] pushComponentOfUrl:@"SwiftLOL://c?id=1" animated:YES];
 }
 @end
 

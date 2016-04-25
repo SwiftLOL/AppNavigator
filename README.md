@@ -13,14 +13,6 @@
 
 
 
-##note
-目前没用上scheme,因为可能会影响到后续的功能开发。目前使用不完全url格式:
-
-```   
-/componentName?arg1=value1&arg2=value2
-
-```
-
 
 ## 使用说明
 * 1.注册scheme，及UIWindow.
@@ -47,23 +39,20 @@
      +(nullable id)viewControllerWithParams:(nullable NSDictionary *)params;
       @optional
       +(nullable SEL)registerSelectorForGetTopViewController;
-      +(nullable NSDictionary *)registerParams;
-      +(nullable NSString *)registerPrimaryKey;
       @end
 ```
    
 * 4.通过url加载组件
 
 ```
-UIViewController *aCtr=[[APPNavigator shareInstance] componentOfUrl:@"/a?userName=swiftlol&userId=1" otherParams:nil];
+ UIViewController *bCtr=[[APPNavigator shareInstance] componentOfUrl:@"SwiftLOL://b?id=1"];
+
 
 ```
 * 5.通过push/present方法展示组件
        
 ```    
-[[APPNavigator shareInstance] pushComponentOfUrl:@"/c" otherParams:nil animated:YES];
-           
-[[APPNavigator shareInstance] presentComponentOfUrl:@"/c" otherParams:nil animated:YES completion:NULL];
+    [[APPNavigator shareInstance] pushComponentOfUrl:@"SwiftLOL://c?id=1" animated:YES];
 
 ```
 

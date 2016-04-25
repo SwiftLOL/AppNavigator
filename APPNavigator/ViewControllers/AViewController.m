@@ -22,11 +22,22 @@
 }
 
 
++(id)viewControllerWithParams:(NSDictionary *)params
+{
+    AViewController *aCtr=[super viewControllerWithParams:params];
+    
+    aCtr.name=[params objectForKey:@"name"];
+    
+    return aCtr;
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title=@"a";
+    self.title=self.name;
     
     self.view.backgroundColor=[UIColor redColor];
     
@@ -38,7 +49,7 @@
 
 -(void)tapMethod
 {
-    [[APPNavigator shareInstance] pushComponentOfUrl:@"/c" otherParams:nil animated:YES];
+    [[APPNavigator shareInstance] pushComponentOfUrl:[NSString urlWithComponentName:@"c" KeysAndParams:nil] animated:YES];
 }
 @end
 

@@ -17,13 +17,26 @@
 }
 
 
++(id)viewControllerWithParams:(NSDictionary *)params
+{
+    BViewController *bCtr=[super viewControllerWithParams:params];
+    bCtr.tempId=[[params objectForKey:@"id"] integerValue];
+    return bCtr;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.title=@"b";
     
-    self.view.backgroundColor=[UIColor yellowColor];
+    
+    if(self.tempId%2==0)
+      self.view.backgroundColor=[UIColor yellowColor];
+    else
+        self.view.backgroundColor=[UIColor grayColor];
+
     
     
     UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMethod)];
@@ -33,7 +46,7 @@
 
 -(void)tapMethod
 {
-    [[APPNavigator shareInstance] presentComponentOfUrl:@"/c" otherParams:nil animated:YES completion:NULL];
+    [[APPNavigator shareInstance] presentComponentOfUrl:[NSString urlWithComponentName:@"c" KeysAndParams:nil] animated:YES completion:NULL];
 }
 
 @end

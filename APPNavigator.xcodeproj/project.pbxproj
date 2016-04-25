@@ -10,8 +10,6 @@
 		E15250191CB177DD00A9E826 /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15250181CB177DD00A9E826 /* AViewController.m */; };
 		E152501C1CB178AE00A9E826 /* BViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E152501B1CB178AE00A9E826 /* BViewController.m */; };
 		E152501F1CB178E800A9E826 /* CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E152501E1CB178E800A9E826 /* CViewController.m */; };
-		E15D0EF41CB79209004F0AA1 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15D0EF31CB79209004F0AA1 /* NavigationController.m */; };
-		E15D0EF71CB79241004F0AA1 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15D0EF61CB79241004F0AA1 /* TabBarController.m */; };
 		E1AC2AD51C9F949000A94556 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2AD41C9F949000A94556 /* main.m */; };
 		E1AC2AD81C9F949000A94556 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2AD71C9F949000A94556 /* AppDelegate.m */; };
 		E1AC2AE01C9F949000A94556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2ADF1C9F949000A94556 /* Assets.xcassets */; };
@@ -41,10 +39,6 @@
 		E152501B1CB178AE00A9E826 /* BViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BViewController.m; sourceTree = "<group>"; };
 		E152501D1CB178E800A9E826 /* CViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CViewController.h; sourceTree = "<group>"; };
 		E152501E1CB178E800A9E826 /* CViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CViewController.m; sourceTree = "<group>"; };
-		E15D0EF21CB79209004F0AA1 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
-		E15D0EF31CB79209004F0AA1 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
-		E15D0EF51CB79241004F0AA1 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
-		E15D0EF61CB79241004F0AA1 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		E1AC2AD01C9F949000A94556 /* APPNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APPNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1AC2AD41C9F949000A94556 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E1AC2AD61C9F949000A94556 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -170,10 +164,6 @@
 				E152501B1CB178AE00A9E826 /* BViewController.m */,
 				E152501D1CB178E800A9E826 /* CViewController.h */,
 				E152501E1CB178E800A9E826 /* CViewController.m */,
-				E15D0EF21CB79209004F0AA1 /* NavigationController.h */,
-				E15D0EF31CB79209004F0AA1 /* NavigationController.m */,
-				E15D0EF51CB79241004F0AA1 /* TabBarController.h */,
-				E15D0EF61CB79241004F0AA1 /* TabBarController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -264,8 +254,6 @@
 			files = (
 				E15250191CB177DD00A9E826 /* AViewController.m in Sources */,
 				E1AC2B141C9F954900A94556 /* APPNavigator.m in Sources */,
-				E15D0EF71CB79241004F0AA1 /* TabBarController.m in Sources */,
-				E15D0EF41CB79209004F0AA1 /* NavigationController.m in Sources */,
 				E152501F1CB178E800A9E826 /* CViewController.m in Sources */,
 				E1AC2AD81C9F949000A94556 /* AppDelegate.m in Sources */,
 				E152501C1CB178AE00A9E826 /* BViewController.m in Sources */,
@@ -362,6 +350,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = APPNavigator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SwiftLOL.APPNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -374,6 +363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = APPNavigator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SwiftLOL.APPNavigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";

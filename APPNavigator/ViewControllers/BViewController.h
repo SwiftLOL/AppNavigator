@@ -10,4 +10,6 @@
 
 @interface BViewController : UIViewController
 
+@property(nonatomic,assign) NSInteger tempId;
+
 @end

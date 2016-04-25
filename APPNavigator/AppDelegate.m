@@ -25,13 +25,14 @@
     [[APPNavigator shareInstance] createViewControllerByClassNames:@[@"TabBarController",@"NavigationController",@"AViewController",@"BViewController",@"CViewController"]];
     
     //通过url生成相应组件
-    UIViewController *aCtr=[[APPNavigator shareInstance] componentOfUrl:@"/a" otherParams:nil];
-    UIViewController *aContainer=[[APPNavigator shareInstance] componentOfUrl:@"/navi" otherParams:@{@"root":aCtr}];
+    UIViewController *aCtr=[[APPNavigator shareInstance] componentOfUrl:[NSString urlWithComponentName:@"a" KeysAndParams:@"name",@"swift",nil]];
+    UINavigationController *nav_a=[[UINavigationController alloc] initWithRootViewController:aCtr];
     
-    UIViewController *bCtr=[[APPNavigator shareInstance] componentOfUrl:@"/b" otherParams:nil];
-    UIViewController *bContainer=[[APPNavigator shareInstance] componentOfUrl:@"/navi" otherParams:@{@"root":bCtr}];
+    UIViewController *bCtr=[[APPNavigator shareInstance] componentOfUrl:@"SwiftLOL://b?id=1"];
+    UINavigationController *nav_b=[[UINavigationController alloc] initWithRootViewController:bCtr];
     
-    UIViewController *rootCtr=[[APPNavigator shareInstance] componentOfUrl:@"/tabBarVC"  otherParams:@{@"viewControllers":@[aContainer,bContainer]}];
+    UITabBarController *rootCtr=[[UITabBarController alloc] init];
+    rootCtr.viewControllers=@[nav_a,nav_b];
     
     self.window.rootViewController=rootCtr;
     [self.window makeKeyAndVisible];

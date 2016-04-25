@@ -1,13 +1,54 @@
 //
 //  APPNavigator.m
-//  chineseBoy0822
+//  SwiftLOL
 //
 //  Created by 王佳佳 on 16/3/2.
-//  Copyright © 2016年 chineseBoy. All rights reserved.
+//  Copyright © 2016年 SwiftLOL. All rights reserved.
 //
 
 #import "APPNavigator.h"
 #import <objc/runtime.h>
+
+
+@implementation NSString (url)
+
++(nonnull NSString *)urlWithComponentName:(nonnull NSString *)componentName KeysAndParams:(nullable id)firstObject,...
+{
+   
+   NSString *url=[NSString stringWithFormat:@"%@://%@",[APPNavigator shareInstance].scheme,componentName];
+    va_list varList;
+    id param=firstObject;
+    if(param)
+    {
+        url=[url stringByAppendingString:[NSString stringWithFormat:@"?%@",param]];
+        va_start(varList, firstObject);
+        int i=1;
+        while ((param = va_arg(varList, id))) {
+            if(i%2==0)
+            {
+                    url=[url stringByAppendingString:[NSString stringWithFormat:@"&%@",param]];
+            }else
+            {
+                NSString *value=[[NSString stringWithFormat:@"%@",param] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                url=[url stringByAppendingString:[NSString stringWithFormat:@"=%@",value]];
+            }
+            i++;
+            
+        }
+        
+        va_end(varList);
+        
+      
+    }
+    
+    
+    return url;
+}
+
+@end
+
+
+
 
 @implementation UIViewController (APPNavigator)
 
@@ -16,7 +57,14 @@
     NSString *className=NSStringFromClass([self class]);
     APPNavigator *appNavigator=[APPNavigator shareInstance];
     [appNavigator registerComponentWithComponentName:[self registerComponentName] withClassName:className];
-    [appNavigator registerMethodForGetWhichChildInWindow:[self registerSelectorForGetTopViewController] ComponentOfClassName:className];
+    [appNavigator registerMethodForGetWhichChildInWindow:[self registerSelectorForGetTopViewController] componentOfClassName:className];
+}
+
+
+
++(nullable id)viewControllerWithParams:(nullable NSDictionary *)params
+{
+    return [[[self class] alloc] init];
 }
 
 
@@ -51,34 +99,18 @@
 
 
 
-
-+(nullable id)viewControllerWithParams:(nullable NSDictionary *)params
-{
-    return [[[self class] alloc] init];
-}
-
-
-
-
-+(nullable NSDictionary *)registerParams
-{
-    return nil;
-}
-
-
-
-
-
-+(nullable NSString *)registerPrimaryKey
-{
-    return nil;
-}
-
-
 +(SEL)registerSelectorForGetTopViewController
 {
     return nil;
 }
+
+
+
+-(BOOL)shouldNavigatedToWindow
+{
+    return YES;
+}
+
 
 @end
 
@@ -109,8 +141,6 @@
 
 @interface APPNavigator ()
 
-//当前app内部 scheme,用于区分访问http、调起第三方app的scheme
-@property(nonatomic,strong,nullable) NSString  *scheme;
 //component 集合
 @property(nonatomic,strong,nonnull) NSMutableArray       *componentArray;
 //component 到 UIViewController的映射集合
@@ -118,6 +148,8 @@
 
 //用于获取某个容器控制器当前展示的是哪个子控制器
 @property(nonatomic,strong,nonnull) NSMutableDictionary  *whichChildComponentInWindowSelectorNameMaps;
+
+@property(nonatomic,strong,nonnull) NSMutableDictionary *componentParamsMaps;
 //当前appDelegate 的 window
 @property(strong,nonatomic,nullable) UIWindow            *window;
 
@@ -160,6 +192,7 @@
         self.componentArray=[NSMutableArray arrayWithArray:@[]];
         self.componentToViewControllerMaps=[NSMutableDictionary dictionaryWithDictionary:@{}];
         self.whichChildComponentInWindowSelectorNameMaps=[NSMutableDictionary dictionaryWithDictionary:@{}];
+
         self.window=nil;
     }
     return self;
@@ -201,7 +234,8 @@
 
 
 
--(void)registerMethodForGetWhichChildInWindow:(nullable SEL) selector ComponentOfClassName:(nullable NSString *)className
+
+-(void)registerMethodForGetWhichChildInWindow:(nullable SEL) selector componentOfClassName:(nullable NSString *)className
 {
     if (!selector) {
         return;
@@ -222,9 +256,7 @@
 
 #pragma mark -- 生成一个指定url的view controller
 // scheme://host/path?param1=value1&param2=value2
-//目前不使用scheme://host/
-//目前格式 /componentName?param1=value1&param2=value2
--(nonnull UIViewController *)componentOfUrl:(nonnull NSString *)url  otherParams:(nullable NSDictionary *)otherParams
+-(nonnull UIViewController *)componentOfUrl:(nonnull NSString *)url
 {
     APPNavigatorAssert(url, @"url不能为空");
     
@@ -232,36 +264,49 @@
     
     NSMutableDictionary *mutabledic=[[NSMutableDictionary alloc] init];
     
-    for (NSString *key in otherParams) {
-        [mutabledic setObject:[otherParams objectForKey:key] forKey:key];
-    }
-
-    NSString *path=nil;
     NSString *paramsString=nil;
     NSString *componentName=nil;
     NSString *componentClassName=nil;
     
-    NSArray *array=[url componentsSeparatedByString:@"?"];
     
-    path=array[0];
-    
-   componentName=[path stringByReplacingOccurrencesOfString:@"/" withString:@""];
-    componentClassName=[self.componentToViewControllerMaps objectForKey:componentName];
-    
-    if(array.count==2)
+    if([url hasPrefix:[NSString stringWithFormat:@"%@://",self.scheme]])
     {
-        paramsString=array[1];
-        NSArray *paramsArray=[paramsString componentsSeparatedByString:@"&"];
-        for (NSString *tempString in paramsArray) {
-            NSArray *valueAndKeyArray=[tempString componentsSeparatedByString:@"="];
-            
-            [mutabledic setObject:valueAndKeyArray[1] forKey:valueAndKeyArray[0]];
+        
+        url=[url substringFromIndex:self.scheme.length+3];
+        
+        
+        NSArray *array=[url componentsSeparatedByString:@"?"];
+        
+        componentName=array[0];
+        componentClassName=[self.componentToViewControllerMaps objectForKey:componentName];
+        
+        if(array.count==2)
+        {
+            paramsString=array[1];
+            NSArray *paramsArray=[paramsString componentsSeparatedByString:@"&"];
+            for (NSString *tempString in paramsArray)
+            {
+                NSArray *valueAndKeyArray=[tempString componentsSeparatedByString:@"="];
+                
+                if(valueAndKeyArray.count==1)
+                {
+                    [mutabledic setObject:@"" forKey:valueAndKeyArray[0]];
+                }else
+                {
+                    if(![valueAndKeyArray[1] isEqualToString:@"(null)"]&&![valueAndKeyArray[1] isEqualToString:@"<null>"])
+                       [mutabledic setObject:[valueAndKeyArray[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:valueAndKeyArray[0]];
+                }
+            }
         }
+        
+       viewController=[NSClassFromString(componentClassName) viewControllerWithParams:mutabledic];
+        
+        return viewController;
+      
     }
     
-    viewController=[NSClassFromString(componentClassName) viewControllerWithParams:mutabledic];
-    
     return viewController;
+
 }
 
 
@@ -277,12 +322,11 @@
 //push 一个view controller
 //  /createOrder?categoryid=1&
 -(void)pushComponentOfUrl:(nonnull NSString *)url
-                                    otherParams:(nullable NSDictionary *)otherParams
                                        animated:(BOOL)animated
 {
     UIViewController *topViewController=[self topViewController];
     
-    UIViewController *viewController=[self componentOfUrl:url otherParams:otherParams];
+    UIViewController *viewController=[self componentOfUrl:url];
     
     [topViewController.navigationController pushViewController:viewController animated:animated];
     
@@ -293,12 +337,11 @@
 
 
 -(void)presentComponentOfUrl:(nonnull NSString *)url
-                                       otherParams:(nullable NSDictionary *)otherParams
                                           animated:(BOOL)animated  completion:(void (^ __nullable)(void))completion
 {
     UIViewController *topViewController=[self topViewController];
     
-    UIViewController *viewController=[self componentOfUrl:url otherParams:otherParams];
+    UIViewController *viewController=[self componentOfUrl:url];
     
     UINavigationController *navigationCtr=[[UINavigationController alloc] initWithRootViewController:viewController];
     

@@ -1,15 +1,19 @@
 //
 //  APPNavigator.h
-//  chineseBoy0822
+//  SwiftLOL
 //
 //  Created by 王佳佳 on 16/3/2.
-//  Copyright © 2016年 chineseBoy. All rights reserved.
+//  Copyright © 2016年 SwiftLOL. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@interface NSString (url)
 
++(nonnull NSString *)urlWithComponentName:(nonnull NSString *)componentName KeysAndParams:(nullable id)firstObject,...;
+
+@end
 
 
 
@@ -18,12 +22,9 @@
 @required
 +(nonnull NSString *)registerComponentName;
 +(nullable id)viewControllerWithParams:(nullable NSDictionary *)params;
-
 @optional
+-(BOOL)shouldNavigatedToWindow;
 +(nullable SEL)registerSelectorForGetTopViewController;
-+(nullable NSString *)registerPrimaryKey;
-+(nullable NSDictionary *)registerParams;
-
 @end
 
 
@@ -44,49 +45,75 @@ _Pragma("clang diagnostic pop") \
 } while (0)
 
 
-
-#define export_module(a)                 
-
 @interface APPNavigator : NSObject
+
+
+//当前app内部 scheme,用于区分访问http、调起第三方app的scheme
+@property(nonatomic,strong,nullable) NSString  *scheme;
+
 
 //application路由器单例
 +(nonnull instancetype) shareInstance;
 
+
+
+
+
 -(void)createViewControllerByClassNames:(nullable NSArray *)classNames;
+
+
+
+
 
 //注册当前app scheme  依赖注入appDelegate,以便操控整个app视图层次结构
 -(void) registerAPPScheme:(nonnull NSString *) scheme  window:(nonnull UIWindow *) window;
+
+
+
+
 /*
    注册一个新的组件及其映射组件类名
-   注册组件格式: /componentName/:requiredParamsList(:requiredParam1(PK):requiredParam2)
-   PK 表示该组件的主键属性
+   注册组件格式:componentName
 */
--(void)registerComponentWithComponentName:(nonnull NSString *)componentName withClassName:(nonnull NSString *)ClassName;
+-(void)registerComponentWithComponentName:(nonnull NSString *)componentName withClassName:(nonnull NSString *)className;
+
+
+
+
 
 //register selector for component which used for get the most top child view controller
--(void)registerMethodForGetWhichChildInWindow:(nullable SEL) selector ComponentOfClassName:(nullable NSString *)className;
+-(void)registerMethodForGetWhichChildInWindow:(nullable SEL) selector componentOfClassName:(nullable NSString *)className;
+
+
+
+
 /*
-  生成指定url的View controller
+  生成指定url的View controller  
+  url格式: scheme://componentName?param1=value1&params2=value2
 */
--(nonnull UIViewController *)componentOfUrl:(nonnull NSString *)url  otherParams:(nullable NSDictionary *)otherParams;
+-(nonnull UIViewController *)componentOfUrl:(nonnull NSString *)url;
 
 
-//push view controller  by  url
+
+
 -(void)pushComponentOfUrl:(nonnull NSString *)url
-                             otherParams:(nullable NSDictionary *)otherParams
                              animated:(BOOL)animated;
 
-//present  view controller by url
+
+
+
 -(void)presentComponentOfUrl:(nonnull NSString *)url
-                             otherParams:(nullable NSDictionary *)otherParams
                              animated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
 
 
-//push view controller
+
+
 -(void)pushComponentOfViewController:(nonnull UIViewController *)controller
                  animated:(BOOL)animated;
 
-//present  view controller
+
+
+
 -(void)presentComponentOfViewController:(nonnull UIViewController *)controller
                     animated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
 

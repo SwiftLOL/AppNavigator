@@ -12,4 +12,6 @@
 
 @interface AViewController : UIViewController
 
+@property(nonatomic,strong,nullable) NSString *name;
+
 @end

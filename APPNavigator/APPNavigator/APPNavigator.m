@@ -50,6 +50,9 @@
 
 
 
+
+
+
 @implementation UIViewController (APPNavigator)
 
 
@@ -234,7 +237,6 @@
 
 
 
-#pragma mark -- 生成一个指定url的view controller
 -(nonnull UIViewController *)componentOfUrl:(nonnull NSString *)url
 {
     APPNavigatorAssert(url, @"url不能为空");
@@ -341,7 +343,6 @@
 
 #pragma mark -- open 、push 、present
 
-//打开第三方app
 -(void) openUrl:(nonnull NSString *) url animated:(BOOL)animated
 {
     if([url hasPrefix:[NSString stringWithFormat:@"%@://",self.scheme]])
@@ -428,7 +429,8 @@
                 SuppressPerformSelectorLeakWarning(
                                                    topViewCtr=[topViewCtr performSelector:seletor withObject:nil];
                                                    );
-            }
+            }else
+                break;
         }
     }
     return topViewCtr;

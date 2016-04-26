@@ -46,7 +46,13 @@
 
 -(void)tapMethod
 {
-    [[APPNavigator shareInstance] presentComponentOfUrl:[NSString urlWithComponentName:@"c" KeysAndParams:nil] animated:YES completion:NULL];
+    
+    NSString *title=@"test";
+    NSNumber *number=[NSNumber numberWithInteger:10];
+    [[APPNavigator shareInstance] openUrl:[NSString urlWithComponentName:@"c" KeysAndParams:@"title",title,@"id",number,nil] animated:YES];
+    
+    
+
 }
 
 @end

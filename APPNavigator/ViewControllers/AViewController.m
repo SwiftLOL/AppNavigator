@@ -49,7 +49,7 @@
 
 -(void)tapMethod
 {
-    [[APPNavigator shareInstance] pushComponentOfUrl:@"SwiftLOL://c?id=1" animated:YES];
+    [[APPNavigator shareInstance] openUrl:@"SwiftLOL://c?id=1&title=swiftLOL" animated:YES];
 }
 @end
 

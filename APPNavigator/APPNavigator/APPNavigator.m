@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 
 
-@implementation NSString (url)
+@implementation NSString (APPNavigatorURL)
 
 +(nonnull NSString *)urlWithComponentName:(nonnull NSString *)componentName KeysAndParams:(nullable id)firstObject,...
 {
@@ -52,12 +52,13 @@
 
 @implementation UIViewController (APPNavigator)
 
+
+
 +(void)initialize
 {
     NSString *className=NSStringFromClass([self class]);
     APPNavigator *appNavigator=[APPNavigator shareInstance];
     [appNavigator registerComponentWithComponentName:[self registerComponentName] withClassName:className];
-    [appNavigator registerMethodForGetWhichChildInWindow:[self registerSelectorForGetTopViewController] componentOfClassName:className];
 }
 
 
@@ -97,18 +98,28 @@
 }
 
 
-
-
-+(SEL)registerSelectorForGetTopViewController
++(nullable NSDictionary *)componentParams
 {
     return nil;
 }
 
 
 
--(BOOL)shouldNavigatedToWindow
+-(SEL)selectorForGetTopViewController
 {
-    return YES;
+    return nil;
+}
+
+
+-(NSString *)presentationType
+{
+    return APPNavigatorPresentationTypePush;
+}
+
+
+-(APPNavigatorPresentationCompletion)presentationCompletion
+{
+    return nil;
 }
 
 
@@ -118,7 +129,7 @@
 
 @implementation UINavigationController (APPNavigator)
 
-+(SEL)registerSelectorForGetTopViewController
+-(SEL)selectorForGetTopViewController
 {
     return  @selector(topViewController);
 }
@@ -129,7 +140,7 @@
 
 @implementation UITabBarController (APPNavigator)
 
-+(SEL)registerSelectorForGetTopViewController
+-(SEL)selectorForGetTopViewController
 {
     return  @selector(selectedViewController);
 }
@@ -141,16 +152,7 @@
 
 @interface APPNavigator ()
 
-//component 集合
-@property(nonatomic,strong,nonnull) NSMutableArray       *componentArray;
-//component 到 UIViewController的映射集合
 @property(nonatomic,strong,nonnull) NSMutableDictionary  *componentToViewControllerMaps;
-
-//用于获取某个容器控制器当前展示的是哪个子控制器
-@property(nonatomic,strong,nonnull) NSMutableDictionary  *whichChildComponentInWindowSelectorNameMaps;
-
-@property(nonatomic,strong,nonnull) NSMutableDictionary *componentParamsMaps;
-//当前appDelegate 的 window
 @property(strong,nonatomic,nullable) UIWindow            *window;
 
 
@@ -189,10 +191,7 @@
     if(self)
     {
         self.scheme=nil;
-        self.componentArray=[NSMutableArray arrayWithArray:@[]];
         self.componentToViewControllerMaps=[NSMutableDictionary dictionaryWithDictionary:@{}];
-        self.whichChildComponentInWindowSelectorNameMaps=[NSMutableDictionary dictionaryWithDictionary:@{}];
-
         self.window=nil;
     }
     return self;
@@ -227,7 +226,6 @@
         NSString *warning=[NSString stringWithFormat:@"该组件%@已经注册过了",className];
         APPNavigatorAssert(className, warning);;
     }else{
-        [self.componentArray addObject:componentName];
         [self.componentToViewControllerMaps setObject:className forKey:componentName];
     }
 }
@@ -235,27 +233,8 @@
 
 
 
--(void)registerMethodForGetWhichChildInWindow:(nullable SEL) selector componentOfClassName:(nullable NSString *)className
-{
-    if (!selector) {
-        return;
-    }
-    APPNavigatorAssert(className, @"class name 不能为空");
-    APPNavigatorAssert(selector, @"selector 不能为空");
-    
-    NSString *selectorName=[self.whichChildComponentInWindowSelectorNameMaps objectForKey:className];
-    if(selectorName)
-    {
-        NSString *warning=[NSString stringWithFormat:@"%@的%@已经注册过了",className,NSStringFromSelector(selector)];
-        APPNavigatorAssert(className, warning);
-    }
-
-    [self.whichChildComponentInWindowSelectorNameMaps setValue:NSStringFromSelector(selector) forKey:className];
-}
-
 
 #pragma mark -- 生成一个指定url的view controller
-// scheme://host/path?param1=value1&param2=value2
 -(nonnull UIViewController *)componentOfUrl:(nonnull NSString *)url
 {
     APPNavigatorAssert(url, @"url不能为空");
@@ -280,6 +259,8 @@
         componentName=array[0];
         componentClassName=[self.componentToViewControllerMaps objectForKey:componentName];
         
+        Class<APPNavigatorProtocol> componentClass = NSClassFromString(componentClassName);
+        
         if(array.count==2)
         {
             paramsString=array[1];
@@ -290,16 +271,17 @@
                 
                 if(valueAndKeyArray.count==1)
                 {
-                    [mutabledic setObject:@"" forKey:valueAndKeyArray[0]];
+                   [self handleParams:@"" key:valueAndKeyArray[0] dictionary:mutabledic class:componentClass];
                 }else
                 {
-                    if(![valueAndKeyArray[1] isEqualToString:@"(null)"]&&![valueAndKeyArray[1] isEqualToString:@"<null>"])
-                       [mutabledic setObject:[valueAndKeyArray[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:valueAndKeyArray[0]];
+                    
+                    [self handleParams:valueAndKeyArray[1] key:valueAndKeyArray[0] dictionary:mutabledic class:componentClass];
+                    
                 }
             }
         }
         
-       viewController=[NSClassFromString(componentClassName) viewControllerWithParams:mutabledic];
+       viewController=[componentClass viewControllerWithParams:mutabledic];
         
         return viewController;
       
@@ -310,70 +292,76 @@
 }
 
 
+-(void)handleParams:(id )param key:(id )key  dictionary:(NSMutableDictionary *)mutableDic class:(Class<APPNavigatorProtocol>)class
+{
+    NSDictionary *paramsMaps=[class componentParams];
+    NSString *paramType=[paramsMaps objectForKey:key];
+    if(![param isEqualToString:@"(null)"]&&![param isEqualToString:@"<null>"])
+    {
+      if(!paramType)
+      {
+          [mutableDic setObject:param forKey:key];
+          return;
+      }
+      if([paramType isEqualToString:APPNavigatorParamTypeString])
+      {
+          [mutableDic setObject:param forKey:key];
+      }else if([paramType isEqualToString:APPNavigatorParamTypeChar]&&[NSNumber numberWithChar:[param charValue]])
+      {
+          [mutableDic setObject:[NSNumber numberWithChar:[param charValue]] forKey:key];
+      }else
+      {
+            if(![param isEqualToString:@""])
+            {
+               if([paramType isEqualToString:APPNavigatorParamTypeInteger]&&[NSNumber numberWithInteger:[param integerValue]])
+                   [mutableDic setObject:[NSNumber numberWithInteger:[param integerValue]] forKey:key];
+                if([paramType isEqualToString:APPNavigatorParamTypeDouble]&&[NSNumber numberWithDouble:[param doubleValue]])
+                   [mutableDic setObject:[NSNumber numberWithDouble:[param doubleValue]] forKey:key];
+                 if([paramType isEqualToString:APPNavigatorParamTypeBool]&&[NSNumber numberWithBool:[param boolValue]])
+                     [mutableDic setObject:[NSNumber numberWithBool:[param boolValue]] forKey:key];
+                if([paramType isEqualToString:APPNavigatorParamTypeFloat]&&[NSNumber numberWithFloat:[param floatValue]])
+                    [mutableDic setObject:[NSNumber numberWithFloat:[param floatValue]] forKey:key];
+                if([paramType isEqualToString:APPNavigatorParamTypeDate])
+                {
+                    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                    NSDate *date = [dateFormatter dateFromString:param];
+                    if(date)
+                    {
+                        [mutableDic setObject:date forKey:key];
+                    }
+                }
+                
+            }
+      }
+    }
+
+}
+
+
 #pragma mark -- open 、push 、present
 
 //打开第三方app
--(void) openUrl:(nonnull NSString *) url
+-(void) openUrl:(nonnull NSString *) url animated:(BOOL)animated
 {
-    APPNavigatorAssert(url, @"url不可为空");
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    if([url hasPrefix:[NSString stringWithFormat:@"%@://",self.scheme]])
+    {
+        UIViewController *viewController=[self componentOfUrl:url];
+        if([[viewController presentationType] isEqualToString:APPNavigatorPresentationTypePresent])
+        {
+            UINavigationController *navigationCtr=[[UINavigationController alloc] initWithRootViewController:viewController];
+            [[self topViewController] presentViewController:navigationCtr animated:animated completion:[viewController presentationCompletion]];
+        }else
+        {
+            [[self topViewController].navigationController pushViewController:viewController animated:animated];
+        }
+        
+    }else
+    {
+          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    }
 }
 
-//push 一个view controller
-//  /createOrder?categoryid=1&
--(void)pushComponentOfUrl:(nonnull NSString *)url
-                                       animated:(BOOL)animated
-{
-    UIViewController *topViewController=[self topViewController];
-    
-    UIViewController *viewController=[self componentOfUrl:url];
-    
-    [topViewController.navigationController pushViewController:viewController animated:animated];
-    
-}
-
-
-
-
-
--(void)presentComponentOfUrl:(nonnull NSString *)url
-                                          animated:(BOOL)animated  completion:(void (^ __nullable)(void))completion
-{
-    UIViewController *topViewController=[self topViewController];
-    
-    UIViewController *viewController=[self componentOfUrl:url];
-    
-    UINavigationController *navigationCtr=[[UINavigationController alloc] initWithRootViewController:viewController];
-    
-    [topViewController presentViewController:navigationCtr animated:animated completion:completion];
-}
-
-
-
-
-
--(void)pushComponentOfViewController:(nonnull UIViewController *)controller
-                            animated:(BOOL)animated
-{
-    UIViewController *topViewController=[self topViewController];
-    
-    [topViewController.navigationController pushViewController:controller animated:animated];
-}
-
-
-
-
--(void)presentComponentOfViewController:(nonnull UIViewController *)controller
-                               animated:(BOOL)animated completion:(void (^ __nullable)(void))completion
-{
-
-    UIViewController *topViewController=[self topViewController];
-    
-    UINavigationController *navigationCtr=[[UINavigationController alloc] initWithRootViewController:controller];
-    
-    [topViewController presentViewController:navigationCtr animated:animated completion:completion];
-
-}
 
 
 
@@ -433,21 +421,16 @@
             continue;
         }else if(topViewCtr.childViewControllers)
         {
-            NSString *seletor=nil;
-            for (NSString *key in self.whichChildComponentInWindowSelectorNameMaps) {
-                if([topViewCtr isKindOfClass:NSClassFromString(key)])
-                {
-                    seletor=[self.whichChildComponentInWindowSelectorNameMaps objectForKey:key];
-                    if([topViewCtr respondsToSelector:NSSelectorFromString(seletor)])
-                        SuppressPerformSelectorLeakWarning(
-                        topViewCtr=[topViewCtr performSelector:NSSelectorFromString(seletor) withObject:nil];
-                                                           );
-                    break;
-                }
+            
+            if([topViewCtr respondsToSelector:@selector(selectorForGetTopViewController)])
+            {
+                SEL seletor=[topViewCtr selectorForGetTopViewController];
+                SuppressPerformSelectorLeakWarning(
+                                                   topViewCtr=[topViewCtr performSelector:seletor withObject:nil];
+                                                   );
             }
         }
     }
-    
     return topViewCtr;
 }
 

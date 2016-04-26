@@ -34,11 +34,19 @@
 
 ```         
       @protocol APPNavigatorProtocol<NSObject>
-      @required
+      
       +(nonnull NSString *)registerComponentName;
-     +(nullable id)viewControllerWithParams:(nullable NSDictionary *)params;
-      @optional
-      +(nullable SEL)registerSelectorForGetTopViewController;
+
+      +(nullable id)viewControllerWithParams:(nullable NSDictionary *)params;
+
+      +(nullable NSDictionary *)componentParams;
+
+      -(nullable SEL)selectorForGetTopViewController;
+
+      -(nonnull NSString *)presentationType;
+
+      -(nullable APPNavigatorPresentationCompletion)presentationCompletion;
+
       @end
 ```
    
@@ -49,10 +57,10 @@
 
 
 ```
-* 5.通过push/present方法展示组件
+* 5.通过openUrl:(nonnull NSString *) url animated:(BOOL)animated方法展示组件
        
 ```    
-    [[APPNavigator shareInstance] pushComponentOfUrl:@"SwiftLOL://c?id=1" animated:YES];
+   [[APPNavigator shareInstance] openUrl:@"SwiftLOL://c?id=1&title=swiftLOL" animated:YES];
 
 ```
 
@@ -67,12 +75,6 @@
 ```
 [[APPNavigator shareInstance] popToPresentingComponentAnimated:YES completion:NULL];
 
-```
-
-* 8 使用openUrl打开其他app
-
-```
-     [[APPNavigator shareInstance] openUrl:@"maps://"];
 ```
 
 ### 更多功能开发中。。。。        

@@ -12,6 +12,25 @@
 
 @implementation CViewController
 
+
++(id)viewControllerWithParams:(NSDictionary *)params
+{
+    CViewController *cCtr=[super viewControllerWithParams:params];
+    
+    return cCtr;
+}
+
+
+
++(NSDictionary *)componentParams
+{
+    return @{@"title":APPNavigatorParamTypeString,
+             @"id":APPNavigatorParamTypeInteger
+             };
+}
+
+
+
 +(NSString *)registerComponentName
 {
     return @"c";

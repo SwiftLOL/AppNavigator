@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window=[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor=[UIColor blackColor];
+    self.window.backgroundColor=[UIColor clearColor];
     
     //注册app内跳转scheme及主window
     [[APPNavigator shareInstance] registerAPPScheme:@"SwiftLOL" window:self.window];

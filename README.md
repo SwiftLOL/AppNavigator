@@ -36,6 +36,8 @@
       @protocol APPNavigatorProtocol<NSObject>
       
       +(nonnull NSString *)registerComponentName;
+      
+      +(nullable NSString *)authenticationFilterUrl;
 
       +(nullable id)viewControllerWithParams:(nullable NSDictionary *)params;
 
@@ -77,4 +79,8 @@
 
 ```
 
-### 更多功能开发中。。。。        
+##更新日志       
+1.4 增加跳转前认证功能。app中，未登陆前，点击一些button的时候，需要跳转到登陆页，为了省去这些重复性创建登陆页跳转到登陆页面的代码，所有添加认证功能。
+
+    +(nullable NSString *)authenticationFilterUrl;
+

@@ -33,6 +33,8 @@ typedef  void (^APPNavigatorPresentationCompletion)(void);
 
 //compnent name used  for loading the corresponding view controller class
 +(nonnull NSString *)registerComponentName;
+//whether require Authentication or not
++(nullable NSString *)authenticationFilterUrl;
 //default initial method
 +(nullable id)viewControllerWithParams:(nullable NSDictionary *)params;
 //used for pointint out the required params with corresponding data type

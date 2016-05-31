@@ -11,6 +11,7 @@
 		E15250191CB177DD00A9E826 /* AViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E15250181CB177DD00A9E826 /* AViewController.m */; };
 		E152501C1CB178AE00A9E826 /* BViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E152501B1CB178AE00A9E826 /* BViewController.m */; };
 		E152501F1CB178E800A9E826 /* CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E152501E1CB178E800A9E826 /* CViewController.m */; };
+		E18ADCD21CF593FE00D9BE5B /* basil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E18ADCD11CF593FE00D9BE5B /* basil.jpg */; };
 		E1AC2AD51C9F949000A94556 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2AD41C9F949000A94556 /* main.m */; };
 		E1AC2AD81C9F949000A94556 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AC2AD71C9F949000A94556 /* AppDelegate.m */; };
 		E1AC2AE01C9F949000A94556 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1AC2ADF1C9F949000A94556 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		E152501B1CB178AE00A9E826 /* BViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BViewController.m; sourceTree = "<group>"; };
 		E152501D1CB178E800A9E826 /* CViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CViewController.h; sourceTree = "<group>"; };
 		E152501E1CB178E800A9E826 /* CViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CViewController.m; sourceTree = "<group>"; };
+		E18ADCD11CF593FE00D9BE5B /* basil.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = basil.jpg; sourceTree = "<group>"; };
 		E1AC2AD01C9F949000A94556 /* APPNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APPNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1AC2AD41C9F949000A94556 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E1AC2AD61C9F949000A94556 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		E1AC2AD21C9F949000A94556 /* APPNavigator */ = {
 			isa = PBXGroup;
 			children = (
+				E18ADCD11CF593FE00D9BE5B /* basil.jpg */,
 				E1AC2B1C1C9F95DC00A94556 /* ViewControllers */,
 				E1AC2AF61C9F954900A94556 /* AppIcon */,
 				E1AC2B001C9F954900A94556 /* APPNavigator */,
@@ -234,6 +237,7 @@
 				E1AC2B0E1C9F954900A94556 /* Icon-Small-40@3x.png in Resources */,
 				E1AC2B0C1C9F954900A94556 /* Icon-60@3x.png in Resources */,
 				E1AC2AE01C9F949000A94556 /* Assets.xcassets in Resources */,
+				E18ADCD21CF593FE00D9BE5B /* basil.jpg in Resources */,
 				E1AC2B1A1C9F954900A94556 /* Default-iOS8-736h@3x.png in Resources */,
 				E1AC2B1B1C9F954900A94556 /* Default.png in Resources */,
 				E1AC2B151C9F954900A94556 /* Default-568h@2x.png in Resources */,

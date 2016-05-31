@@ -64,7 +64,10 @@
     [appNavigator registerComponentWithComponentName:[self registerComponentName] withClassName:className];
 }
 
-
++(nullable NSString *)authenticationFilterUrl
+{
+    return nil;
+}
 
 +(nullable id)viewControllerWithParams:(nullable NSDictionary *)params
 {
@@ -262,6 +265,14 @@
         componentClassName=[self.componentToViewControllerMaps objectForKey:componentName];
         
         Class<APPNavigatorProtocol> componentClass = NSClassFromString(componentClassName);
+        
+        
+        //whether require authentication or not
+        if([componentClass authenticationFilterUrl])
+        {
+            return [self componentOfUrl:[componentClass authenticationFilterUrl]];
+        }
+
         
         if(array.count==2)
         {
